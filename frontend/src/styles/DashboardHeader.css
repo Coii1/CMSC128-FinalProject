@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* ROOT class to declare globals */
+:root {
+    --maroon: #8A1538;
+    --forest-green: #00573F;
+    --yellow: #FFB81C;
+    --black: #000000;
+}
+
+/* SCHOLARSHIPS PAGE HEADER */
+
+.main-header {
+    width: 100%;
+    height: 170px;
+    flex-shrink: 0;
+    border-radius: 0 0 10px 10px;
+    background: var(--MAROON, #8A1538);
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.upvLogo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.source-serif-4-header h2 {
+    color: white;
+    font-family: "Source Serif 4", serif;
+    font-size: 28px;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0;
+    justify-content: center;
+}
+
+.source-serif-4-header h3 {
+    color: white;
+    font-family: "Source Serif 4", serif;
+    font-size: 18px;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    margin: 4px 0 0 0;
+    text-align: center;
+}
+
+.roboto-header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+
+.main-header a {
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+}
+
+.main-header a:hover {
+  color: var(--yellow);
+}
+
+.dropBtn {
+    display: inline-flex;
+    height: 65px;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.dropBtn:hover {
+    color: var(--yellow);
+}
+
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.signupBtn {
+    background: var(--forest-green);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signupBtn:hover {
+    opacity: 0.9;
+    background-color: #125f49;
+}

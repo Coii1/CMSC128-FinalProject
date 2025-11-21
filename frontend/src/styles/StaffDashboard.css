@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* ROOT class to declare globals */
+:root {
+    --maroon: #8A1538;
+    --forest-green: #00573F;
+    --yellow: #FFB81C;
+    --black: #000000;
+}
+
+.staffDashboardLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.staffDashboardContent {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 2rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 0.5rem 0 4rem 0;
+}
+
+.dashboardCard {
+    width: 20rem;
+    height: 20rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    text-align:left;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: white;
+    padding-bottom: 2rem;
+}
+
+.dashboardCard:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.dashboardCard:active {
+	transform: translateY(1.2px);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-green {
+    background-color: var(--forest-green) !important;
+}
+
+.card-maroon {
+    background-color: var(--maroon);
+}
+
+.card-body h5{
+    color: white;
+    font-family: Montserrat;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 20rem;
+    padding: 0 1rem 0 1rem
+}
