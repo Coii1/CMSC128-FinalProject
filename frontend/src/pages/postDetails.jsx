@@ -3,6 +3,7 @@ import '../styles/postDetails.css'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import { useState } from 'react'
+import api from '../api.js'
 
 function PostDetails() {
     const [postInformation, setPostInformation] = useState({});
@@ -20,21 +21,29 @@ function PostDetails() {
     const [requirementName, setRequirementName] = useState('');
     const [fileType, setFileType] = useState('');
     
-    const postScholarship = (details) => {
-        setPostInformation(details);
-        //vv will be used for testing later and try to optimize
-        console.log(postInformation);
+    const postScholarship = async () => {
+        const payload = {
+            title: scholarshipTitle,
+            slots: Number(slotsAvailable),
+            qualifications: qualifications,
+            benefits: benefits,
+            instructions: instructions,
+            requirements: JSON.stringify(requirementsList.requirements),
+            start_date: applicationPeriodStart,
+            end_date: applicationPeriodEnd,
+            deadline: deadline,
+        };
 
-        setScholarshipTitle('');
-        setSlotsAvailable(0);
-        setQualifications('');
-        setBenefits('');
-        setInstructions('');
-        setApplicationPeriodStart('');
-        setApplicationPeriodEnd('');
-        setDeadline('');
-        setRequirements({requirements: []});
-    }
+        try {
+            const response = await api.post("/scholarships/", payload);
+            console.log("Scholarship created:", response.data);
+            alert("Scholarship posted successfully!");
+        } catch (error) {
+            console.error("Error posting scholarship:", error.response?.data || error);
+            alert("Error posting scholarship.");
+        }
+    };
+
 
     const addRequirement = (requirement) => {
         let requirementsArray = requirementsList['requirements'];
@@ -144,18 +153,7 @@ function PostDetails() {
 
                     <div className='option'>
                         <button type="button" className="cancelBtn btn btn-secondary">Cancel</button>
-                        <button type="button" className="postBtn btn btn-success"  onClick = {() => postScholarship({
-                            scholarshipTitleHolder: scholarshipTitle,
-                            slotsAvailableHolder: slotsAvailable,
-                            qualificationsHolder: qualifications,
-                            benefitsHolder: benefits,
-                            instructionsHolder: instructions,
-                            applicationPeriodStartHolder: applicationPeriodStart,
-                            applicationPeriodEndHolder: applicationPeriodEnd,
-                            deadlineHolder: deadline,
-                            requirementsHolder: requirementsList 
-                            
-                            })}>Post scholarship</button>
+                        <button type="button" className="postBtn btn btn-success"  onClick={() => postScholarship()}>Post scholarship</button>
                     </div>
 
                 </div>
