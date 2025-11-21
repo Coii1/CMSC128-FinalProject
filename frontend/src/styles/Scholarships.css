@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* ROOT class to declare globals */
+:root {
+    --maroon: #8A1538;
+    --forest-green: #00573F;
+    --yellow: #FFB81C;
+    --black: #000000;
+}
+
+
+.scholarshipHeader {
+    margin: 16px 16px 0 -25px;
+    color: var(--MAROON, #8A1538);
+    font-family: Montserrat;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.sectionHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.scholarshipsPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.scholarshipsContent {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto; 
+    padding-bottom: 0; 
+}
+
+.sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0;
+    gap: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+.sortTitle {
+    color: #404040;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+.sortDropdown {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    gap: 18px;
+    border-radius: 5px;
+    padding: 5px 8px 5px 8px;
+}
+
+/* ACCORDION */
+
+.accordionContainer {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    justify-content: space-between;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordionItem {
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    background: white;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.accordionHeaderLeft {
+    cursor: pointer;
+    padding: 12px 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+
+}
+
+.accordionHeaderLeft h3 {
+    padding-left: 10px;
+    margin-bottom: 0;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: normal;
+    white-space: normal;
+    color: black;
+}
+
+.chevron {
+    font-size: 15px;
+    padding-left: 10px;
+    color: var(--forest-green);
+    text-align: center;
+}
+
+.slotsContainer {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    border-radius: 10px;
+    background: var(--MAROON, #8A1538);
+    color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    width: 150px;
+    height: 35px;
+    padding: 6px 31px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.accordionBody {
+    padding: 12px 15px;
+    background: white;
+}
+
+.accordionBody h5 {
+    color: var(--forest-green);
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.accordionBody li {
+    color: var(--black);
+}
+
+li.deadline {
+    color: var(--maroon);
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.applyBtnWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.applyBtn {
+    display: flex;
+    width: 150px;
+    height: 35px;
+    padding: 6px 31px;
+    margin: 15px 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: none;
+    white-space: normal;
+    background: var(--FOREST-GREEN, #00573F);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out; 
+}
+
+.applyBtn:hover {
+    text-decoration: underline;
+    transform: scale(1.2);
+}

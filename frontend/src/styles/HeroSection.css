@@ -1,0 +1,67 @@
+.heroSection {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.upvCampus {
+    width: 100%;      /* to fit the image to right side of the screen */
+    height: var(--hero-img-height, 384px);
+    object-fit: cover;
+    flex-shrink: 0;
+    aspect-ratio: 15/4;
+    filter: blur(2.5px);
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heroSection::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heroContent h1 {
+    color: var(--YELLOW, #FFB81C);
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    content: "AVAILABLE<br/>SCHOLARSHIPS";
+    line-height: normal;
+}
+
+.headerContainer {
+    margin-bottom: 2rem;
+}
+
+
+.downBtn {
+    background:none;
+    border-radius: 4px;
+    border: none;
+    padding: 8px;
+}
+
+.heroChevronDown {
+    font-size: 1.2rem;
+    color: white;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+}
