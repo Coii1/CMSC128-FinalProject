@@ -9,7 +9,9 @@ function Posts() {
         <div>
             <Header />
 
-            <Link to="/postDetails" className='signupBtn'>Posts</Link>
+            <div className = "middleDivision">
+                <Link to="/postDetails" className='signupBtn'>Posts</Link>
+            </div>
 
             <Footer />
         </div>
