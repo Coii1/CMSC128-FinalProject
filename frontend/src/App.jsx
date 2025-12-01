@@ -8,6 +8,7 @@ import Posts from './pages/postManagement.jsx'
 import PostDetails from './pages/postDetails.jsx'
 import NotFound from './pages/NotFound.jsx'
 import StaffDashboard from './pages/StaffDashboard.jsx'
+import ScholarshipRequirements from './pages/ScholarshipRequirements.jsx'
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
 			<Route path="/posts" element={ <Posts/> } />
             <Route path="/postDetails" element={ <PostDetails/> } />
 			<Route path='/staffDashboard' element={<StaffDashboard/>} />
+			{/* application page in figma */}
+			<Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
 
 
 			{/* Protected routes - Pages that should only be accessed after signing up/logging in*/}
