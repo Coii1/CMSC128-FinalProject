@@ -69,19 +69,21 @@
 
 .main-header a {
     font-weight: 400;
-    color: white;
     text-decoration: none;
 }
 
-.main-header a:hover {
-  color: var(--yellow);
+.home {
+    color: white;
 }
 
-.dropBtn {
+.main-header a:hover {
+    color: #eaa208;
+}
+
+.downloadDropBtn,
+.loginDropBtn {
     display: inline-flex;
-    height: 65px;
     align-items: center;
-    gap: 5px;
     flex-shrink: 0;
     background: none;
     border: none;
@@ -91,14 +93,30 @@
     font-weight: 400;
 }
 
-.dropBtn:hover {
+.downloadDropBtn:hover {
     color: var(--yellow);
 }
 
 button:focus,
 button:active {
-  outline: none;
-  box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent !important;
+}
+
+.main-header a:focus,
+.main-header a:active,
+.main-header a:focus-visible,
+.main-header button:focus,
+.main-header button:active,
+.main-header button:focus-visible,
+.main-header .dropdown-toggle:focus,
+.main-header .dropdown-toggle:active,
+.main-header .dropdown-toggle:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: var(--yellow) !important;
 }
 
 .signupBtn {

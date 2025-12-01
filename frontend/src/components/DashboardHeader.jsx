@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
-// import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronDown } from 'react-icons/fa'
 import upvLogo from '../assets/upvlogo.png'
 import '../styles/DashboardHeader.css'
+
+import StudentLogin from '../pages/StudentLogin'
+import AdminLogin from '../pages/AdminLogin'
 
 function DashboardHeader() {
     return(
@@ -9,15 +12,33 @@ function DashboardHeader() {
             <Logo />
 
             <nav className='roboto-header-right'>
-                <Link to='/'>Home</Link>
+                <Link className="home" to='/'>Home</Link>
 
-                <div className='dropdown'>
-                    <button className='dropBtn'>
-                        Downloads 
-                        {/* <FaChevronDown className="chevronDown"/> */}
+                <div className="dropdown">
+                    <button className="downloadDropBtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Downloads
                     </button>
+                    {/* for downloadable files */}
+                    <ul className="dropdown-menu">
+                        <li><a className="dropdown-item" href="#">PDF 1</a></li>
+                        <li><a className="dropdown-item" href="#">PDF 2</a></li>
+                        <li><a className="dropdown-item" href="#">PDF 3</a></li>
+                    </ul>
                 </div>
-                <Link to="/login">Login</Link>
+
+
+                <div className="dropdown">
+                    <a className="loginDropBtn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Login
+                    </a>
+
+                    <ul className="dropdown-menu">
+                        <li><Link className="dropdown-item" to="/studentLogin">Student</Link></li>
+                        <li><Link className="dropdown-item" to="/adminLogin">Admin</Link></li>
+                        
+                    </ul>
+                </div>
+                {/* <Link to="/login">Login</Link> */}
                 <Link to="/signup" className='signupBtn'>Sign Up</Link>
             </nav>
 
