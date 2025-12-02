@@ -76,8 +76,8 @@ function ProtectedRoute( {children} ) {
         return <div>Loading...</div>
     }
 
-    // if unauthorized, redirect to the login page
-    // return isAuthorized ? children : <Navigate to="/login"/>
+    //if unauthorized, redirect to the login page
+    return isAuthorized ? children : <Navigate to="/login"/>
 
     if (!isAuthorized) {
         const userType = localStorage.getItem("userType")
