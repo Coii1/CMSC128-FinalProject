@@ -115,11 +115,11 @@ button:active {
 .main-header .dropdown-toggle:focus-visible {
     outline: none !important;
     box-shadow: none !important;
-    background-color: transparent !important;
+    background-color: none !important;
     color: var(--yellow) !important;
 }
 
-.signupBtn {
+.loginDropBtn {
     background: var(--forest-green);
     color: white;
     padding: 10px 20px;
@@ -128,7 +128,21 @@ button:active {
     text-decoration: none;
 }
 
-.signupBtn:hover {
+.loginDropBtn:hover {
     opacity: 0.9;
     background-color: #125f49;
+}
+
+.main-header .loginDropBtn:focus,
+.main-header .loginDropBtn:active,
+.main-header .loginDropBtn[aria-expanded="true"],
+.main-header .loginDropBtn.show {
+    background-color: var(--forest-green) !important;
+    color: white !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.main-header .loginDropBtn[aria-expanded="true"]:hover {
+    background-color: #125f49 !important;
 }

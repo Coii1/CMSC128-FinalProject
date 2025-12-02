@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../contants"
-import LoadingIndicator from "./LoadingIndicator"
-import Header from "../components/Header"
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
+import DashboardHeader from "./DashboardHeader"
 import Footer from "../components/Footer"
+import LoadingIndicator from "./LoadingIndicator"
 import "../styles/Form.css"
 
 
@@ -61,7 +61,7 @@ function Form( { userType } ) {
 
     return (
         <div className="login">
-            <Header />
+            <DashboardHeader />
             
             <div className="loginContent">
                 <h2>{ name }</h2>

@@ -1,7 +1,7 @@
 // axios interceptor 
 // api.js for authorization token to be automatically added
 import axios from "axios"
-import { ACCESS_TOKEN } from "./contants"
+import { ACCESS_TOKEN } from "./constants"
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL   // import anything specified in the environment variable file
