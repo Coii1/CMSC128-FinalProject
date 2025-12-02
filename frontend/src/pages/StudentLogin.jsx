@@ -1,8 +1,11 @@
 // STUDENT LOGIN PAGE
+
+import Form from "../components/Form"
+
 function StudentLogin() {
-    return <div>
-        <h1>Student Login Page</h1>
-    </div>
+    return (
+        <Form userType="student" />
+    )
 }
 
 export default StudentLogin

@@ -1,4 +1,4 @@
-// import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronDown } from 'react-icons/fa'
 import upvCampus from '../assets/upvcampus.jpg'
 import '../styles/HeroSection.css'
 
@@ -16,14 +16,11 @@ function HeroSection( { title, height = '384px', showChevron = true, scrollToSec
 
                 { showChevron && (
                     <button className='downBtn' onClick={scrollToSection}>
-                        {/* <FaChevronDown className="heroChevronDown"/> */}
+                        <FaChevronDown className="heroChevronDown"/>
                     </button>
                     )
                 }
-
-                {/* <div className="downBtn">
-                    <FaChevronDown className="heroChevronDown"/>
-                </div> */}
+                
             </div>
         </section>
     )
