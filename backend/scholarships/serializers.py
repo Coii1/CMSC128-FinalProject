@@ -3,7 +3,7 @@ from .models import Scholarship
 
 class ScholarshipSerializer(serializers.ModelSerializer):
     # Optional: explicitly expose choices as a ChoiceField (ModelSerializer will also do this automatically).
-    # type = serializers.ChoiceField(choices=Scholarship.SCHOLARSHIP_TYPE_CHOICES)
+    type = serializers.ChoiceField(choices=Scholarship.SCHOLARSHIP_TYPE_CHOICES)
 
     class Meta:
         model = Scholarship
@@ -14,7 +14,7 @@ class ScholarshipSerializer(serializers.ModelSerializer):
             'qualifications',
             'benefits',
             'instructions',
-            # 'type',              
+            'type',              
             'requirements',
             'start_date',
             'end_date',
