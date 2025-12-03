@@ -35,11 +35,7 @@ function PostDetails() {
         };
 
         try {
-            const response = await api.post("/scholarships/", payload, {
-                headers: {
-                    Authorization: undefined, // Remove Authorization header
-                },
-            });
+            const response = await api.post("/scholarships/", payload);
             console.log("Scholarship created:", response.data);
             alert("Scholarship posted successfully!");
         } catch (error) {
