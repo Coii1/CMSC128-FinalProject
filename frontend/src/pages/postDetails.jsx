@@ -35,7 +35,11 @@ function PostDetails() {
         };
 
         try {
-            const response = await api.post("/scholarships/", payload);
+            const response = await api.post("/scholarships/", payload, {
+                headers: {
+                    Authorization: undefined, // Remove Authorization header
+                },
+            });
             console.log("Scholarship created:", response.data);
             alert("Scholarship posted successfully!");
         } catch (error) {
@@ -50,7 +54,7 @@ function PostDetails() {
         requirementsArray.push(requirement);
         setRequirements({requirements: requirementsArray});
         //vv will be used for testing later and try to optimize
-        // console.log(requirementsList);
+        console.log(requirementsList);
         document.getElementById("myForm").style.display = "none";
 
         setRequirementName('');

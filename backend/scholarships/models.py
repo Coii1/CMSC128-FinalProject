@@ -15,7 +15,7 @@ class Scholarship(models.Model):
     # type = models.CharField(max_length=20, choices=SCHOLARSHIP_TYPE_CHOICES)
     requirements = models.TextField()
     start_date = models.DateField()    
-    #startdate must be ≤ deadline in serializer
+    # start_date must be ≤ deadline in serializer
     end_date = models.DateField()
     deadline = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)

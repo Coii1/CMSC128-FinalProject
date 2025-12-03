@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Scholarship
 
 class ScholarshipSerializer(serializers.ModelSerializer):
+    # Optional: explicitly expose choices as a ChoiceField (ModelSerializer will also do this automatically).
+    # type = serializers.ChoiceField(choices=Scholarship.SCHOLARSHIP_TYPE_CHOICES)
 
     class Meta:
         model = Scholarship
@@ -12,6 +14,7 @@ class ScholarshipSerializer(serializers.ModelSerializer):
             'qualifications',
             'benefits',
             'instructions',
+            # 'type',              
             'requirements',
             'start_date',
             'end_date',
@@ -19,6 +22,7 @@ class ScholarshipSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
+        # read_only_fields = ['created_at', 'updated_at']
 
     # Custom validation: start_date must be ≤ end_date and ≤ deadline
     def validate(self, data):
