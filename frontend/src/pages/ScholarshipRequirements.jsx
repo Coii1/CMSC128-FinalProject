@@ -58,6 +58,9 @@ function ScholarshipRequirements() {
             />
         </div>
 
+        {/* onclick?? */}
+        <button class = 'filepond-button' >Submit</button>
+
       <Footer />
     
     </div>
