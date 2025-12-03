@@ -54,6 +54,8 @@ function Scholarships() {
                         
                         {/* Scholarship accordion */}
                         <Accordion type={category.type} /> 
+                        
+
                     </section>
                 ))}
 

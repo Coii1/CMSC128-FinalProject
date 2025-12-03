@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { FaChevronUp } from "react-icons/fa"
-// import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronUp } from "react-icons/fa"
+import { FaChevronDown } from 'react-icons/fa'
 import '../styles/Scholarships.css'
 
 // temp data to be replaced with database
@@ -83,7 +83,7 @@ function Accordion({ type, sortBy }) {
                     <div className="accordionHeaderLeft" onClick={() => toggleAccordion(index)}>
                         <div className='headerTitle'>
                             <span className="chevron">
-                                {/* {openIndex === index ? <FaChevronUp /> : <FaChevronDown />} */}
+                                {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
                             </span>
 
                             <h3>{scholarship.name}</h3>
@@ -96,7 +96,7 @@ function Accordion({ type, sortBy }) {
                     </div>
 
                     {openIndex === index && (
-                        <div className="accordionBody">
+                        <div className="accordionBody scholarshipContent">
                             <h5>Qualifications</h5>
                             <ul>
                                 <li className='qualifications'>{scholarship.qualifications}</li>

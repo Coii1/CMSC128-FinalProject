@@ -1,7 +1,11 @@
-function AdminLogin () {
-    return <div>
-        <h1>Admin Login Page</h1>
-    </div>
+// ADMIN LOGIN PAGE
+
+import Form from "../components/Form"
+
+function AdminLogin() {
+    return (
+        <Form userType="admin" />
+    )
 }
 
 export default AdminLogin
