@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views
+from .views import ScholarshipListCreateView, ScholarshipDetailAPI
 
 urlpatterns = [
-    path("", views.ScholarshipListCreateView.as_view(), name="scholarship-list-create"),
+    path("", ScholarshipListCreateView.as_view(), name="scholarship-list-create"),
+    path("<int:pk>/", ScholarshipDetailAPI.as_view(), name="scholarship-detail"),
 ]
