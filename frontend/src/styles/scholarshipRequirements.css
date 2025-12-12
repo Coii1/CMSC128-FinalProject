@@ -1,0 +1,49 @@
+#headingOfPage {
+	display: flex;
+	width: 46.375rem;
+	height: 4.125rem;
+	flex-direction: column;
+	justify-content: center;
+	color: var(--MAROON, #8A1538);
+	font-family: Montserrat;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 2.5rem;
+}
+
+
+
+.filepond-button{
+  padding: 10px 10px;
+  background-color: var(--MAROON, #8A1538);    
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 300;
+  transition: background-color 0.2s ease;
+  
+  position: relative;
+  right: 10px;
+  left: 92%;
+  /* top: 50%; */
+  /* bottom: 50%; */
+
+
+}
+
+/* .filepond-button:hover{
+  background-color: var(--MAROON, #8A1538); 
+}  */
+
+.scholarshipReqBlock{
+  border: 1px solid #020202;;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: #c7c7c7;
+  position: static;
+
+}

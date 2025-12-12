@@ -9,6 +9,7 @@ function PostDetails() {
     const [postInformation, setPostInformation] = useState({});
 
     const [scholarshipTitle, setScholarshipTitle] = useState('');
+    const [scholarshipType, setScholarshipType] = useState('government');
     const [slotsAvailable, setSlotsAvailable] = useState(0);
     const [qualifications, setQualifications] = useState('');
     const [benefits, setBenefits] = useState('');
@@ -24,6 +25,7 @@ function PostDetails() {
     const postScholarship = async () => {
         const payload = {
             title: scholarshipTitle,
+            type: scholarshipType,
             slots: Number(slotsAvailable),
             qualifications: qualifications,
             benefits: benefits,
@@ -50,7 +52,7 @@ function PostDetails() {
         requirementsArray.push(requirement);
         setRequirements({requirements: requirementsArray});
         //vv will be used for testing later and try to optimize
-        // console.log(requirementsList);
+        console.log(requirementsList);
         document.getElementById("myForm").style.display = "none";
 
         setRequirementName('');
@@ -81,6 +83,14 @@ function PostDetails() {
                         <input type="text" className="form-control title" id="title" onChange={(e) => setScholarshipTitle(e.target.value)} required/>
                          <p>for testing, will be removed later on</p>
                          <p>{scholarshipTitle} </p>
+                    </div>
+
+                    <div className='mb-3'>
+                        <label className='required form-label' htmlFor="type">Scholarship Type</label>
+                        <select className="form-select" id="type" value={scholarshipType} onChange={(e) => setScholarshipType(e.target.value)} required>
+                            <option value="government">Government-Funded</option>
+                            <option value="private">Private</option>
+                        </select>
                     </div>
 
                     <div className='mb-3'>
