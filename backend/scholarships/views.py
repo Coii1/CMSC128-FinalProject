@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .models import Scholarship
 from .serializers import ScholarshipSerializer
 
@@ -11,5 +11,5 @@ class ScholarshipListCreateView(generics.ListCreateAPIView):
         if self.request.method == "POST":
             # Only Admin users can POST (create scholarships)
             return [IsAdminUser()]
-        # Students + Admins can GET
-        return [IsAuthenticated()]
+        # Allow anyone to GET the scholarships list (public homepage)
+        return [AllowAny()]
