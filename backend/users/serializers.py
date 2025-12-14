@@ -22,15 +22,16 @@ class RegisterSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
 
-
+#carefull not to create user vefore validation. 
 class StudentRegisterSerializer(serializers.ModelSerializer):
     # include both user fields and student-specific fields
     password = serializers.CharField(write_only=True)
-    student_number = serializers.CharField()
-    age = serializers.IntegerField()
-    gender = serializers.CharField()
-    course = serializers.CharField()
-    income_bracket = serializers.CharField()
+        # student-specific fields are write-only so they won't be read from the User instance
+    student_number = serializers.CharField(write_only=True)
+    age = serializers.IntegerField(write_only=True)
+    gender = serializers.CharField(write_only=True)
+    course = serializers.CharField(write_only=True)
+    income_bracket = serializers.IntegerField(write_only=True, min_value=0)
 
     class Meta:
         model = User
