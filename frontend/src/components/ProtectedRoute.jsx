@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 
 // This checks if the user is authorized to access a specific route
 // Otherwise, redirect the user and tell them that they need to log in before viewing the route
-function ProtectedRoute( {children} ) {
+function ProtectedRoute( {children, allowedRoles} ) {
     const [isAuthorized, setIsAuthorized] = useState(null)
 
     useEffect(() => {
@@ -15,18 +15,21 @@ function ProtectedRoute( {children} ) {
 
     // Refreshes the access token automatically
     const refreshToken = async () => {
-        const refreshToken = localStorage.getItem(REFRESH_TOKEN)
+        const refresh = localStorage.getItem(REFRESH_TOKEN)
+        if (!refresh) {
+            setIsAuthorized(false)
+            return
+        }
         try {
-            const res = await api.post("/api/token/refresh/", {
-                refresh: refreshToken
+            const res = await api.post("/auth/refresh/", {
+                refresh: refresh
             })
 
             if (res.status === 200) {
                 // change to a new access token
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 setIsAuthorized(true)
-            }
-            else {
+            } else {
                 setIsAuthorized(false)
             }
 
@@ -55,20 +58,20 @@ function ProtectedRoute( {children} ) {
 
             if (tokenExpiration < now) {
                 await refreshToken()
+                return
             }
-            else {
-                if (allowedRoles && !allowedRoles.includes(userType)) {
-                    setIsAuthorized(false)
-                    return
-                }
-                setIsAuthorized(true)
+
+            if (allowedRoles && !allowedRoles.includes(userType)) {
+                setIsAuthorized(false)
+                return
             }
+
+            setIsAuthorized(true)
 
         } catch (error) {
             console.error("Token validation failed:", error)
             setIsAuthorized(false)
         }
-        
 
     }
 
@@ -83,10 +86,10 @@ function ProtectedRoute( {children} ) {
         const userType = localStorage.getItem("userType")
 
         if (userType === "admin") {
-            return <Navigate to="/adminlogin" replace />
+            return <Navigate to="/adminLogin" replace />
 
         } else {
-            return <Navigate to="/studentlogin" replace />
+            return <Navigate to="/studentLogin" replace />
 
         }
     }
