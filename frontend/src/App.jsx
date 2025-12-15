@@ -11,6 +11,8 @@ import ScholarshipRequirements from './pages/ScholarshipRequirements.jsx'
 import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
+import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
+import EditScholarship from './pages/EditScholarship.jsx'
 
 function App() {
 

@@ -43,7 +43,7 @@ button:active {
     border-radius: 50%;
 }
 
-.headerLeft a {
+.home {
     font-weight: 400;
     color: white;
     text-decoration: none;
@@ -51,7 +51,7 @@ button:active {
     transition: color 0.2s ease;
 }
 
-.headerLeft a:hover {
+.home a:hover {
     color: var(--yellow);
 }
 
@@ -113,7 +113,8 @@ button:active {
 }
 
 .notifBtn:hover,
-.profileBtn:hover {
+.profileBtn:hover,
+.home:hover {
     color: var(--yellow);
 }
 

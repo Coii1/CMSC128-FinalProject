@@ -10,23 +10,24 @@ function Header() {
             
             <nav className='headerLeft'>
                 <Logo />
-                <Link to='/'>Home</Link>
-
-                <div className="dropdown">
+                
+                {/* COMMENTED OUT DOWNLOADS */}
+                {/* <div className="dropdown">
                     <button className="downloadDropBtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Downloads
                     </button>
-                    {/* for downloadable files */}
+                    
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">PDF 1</a></li>
                         <li><a className="dropdown-item" href="#">PDF 2</a></li>
                         <li><a className="dropdown-item" href="#">PDF 3</a></li>
                     </ul>
-                </div>
+                </div> */}
             </nav>
             
             <nav className='roboto-header-right'>
                 
+                <Link className='home' to='/'>Home</Link>
                 <div className='notifications'>
                     <button className='notifBtn'>
                         <IoNotifications />
