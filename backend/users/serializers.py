@@ -85,6 +85,8 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
 
 
 class AdminRegisterSerializer(serializers.ModelSerializer):
+    # allow username to be omitted so it can default to email
+    username = serializers.CharField(required=False, allow_blank=True)
     password = serializers.CharField(write_only=True)
 
     class Meta:
