@@ -6,7 +6,8 @@ from .models import Application
 from .serializers import StudentApplicationSerializer, AdminApplicationSerializer
 from users.models import StudentProfile
 
-
+#GET returns all applications of student
+#POST creates a new application for the student
 class StudentApplicationListCreateView(generics.ListCreateAPIView):
 	serializer_class = StudentApplicationSerializer
 	permission_classes = [IsAuthenticated]
@@ -30,6 +31,7 @@ class StudentApplicationListCreateView(generics.ListCreateAPIView):
 		serializer.save(student=student)
 
 
+#GET /applications/student/<pk>/ retrieves a specific application. pk is the application id
 class StudentApplicationDetailView(generics.RetrieveAPIView):
 	serializer_class = StudentApplicationSerializer
 	permission_classes = [IsAuthenticated]
