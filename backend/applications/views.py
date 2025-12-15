@@ -8,6 +8,7 @@ from users.models import StudentProfile
 
 #GET returns all applications of student
 #POST creates a new application for the student
+#did not yet enforce validation that application is created  only when the documents are all uploaded
 class StudentApplicationListCreateView(generics.ListCreateAPIView):
 	serializer_class = StudentApplicationSerializer
 	permission_classes = [IsAuthenticated]
