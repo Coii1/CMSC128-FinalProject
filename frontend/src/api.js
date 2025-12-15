@@ -14,6 +14,7 @@ api.interceptors.request.use(
         if (token) {
             config.headers.Authorization = `Bearer ${token}`    // Authorization header
         }
+        console.log("Request headers:", config.headers); // Debugging
         return config
     },
     (error) => {

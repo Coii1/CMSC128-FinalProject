@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react'      // reference to a DOM element for scrolling
+import { useState, useRef, useEffect } from 'react'      // reference to a DOM element for scrolling
+import api from '../api.js'
 
 import DashboardHeader from '../components/DashboardHeader.jsx'
 import HeroSection from '../components/HeroSection.jsx'
@@ -8,7 +9,24 @@ import '../styles/Scholarships.css'
 
 function Scholarships() {
     const contentRef = useRef(null)
-    const [sortBy, setSortBy] = useState("")
+    const [sortBy, setSortBy] = useState("datePosted")
+    const [scholarships, setScholarships] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        fetchScholarships();
+    }, []);
+
+    const fetchScholarships = async () => {
+        try {
+            const response = await api.get("/scholarships/");
+            setScholarships(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching scholarships:", error);
+            setLoading(false);
+        }
+    }
 
     const scrollToContent = () => {
         if (contentRef.current) {
@@ -17,8 +35,8 @@ function Scholarships() {
     }
 
     const scholarshipCategories = [
-        { title: "Government-Funded Scholarships", type: "government" },
-        { title: "Private Scholarships", type: "private" }
+        { title: "Government-Funded", type: "government" },
+        { title: "Private", type: "private" }
     ]
 
     return (
@@ -53,7 +71,11 @@ function Scholarships() {
                         </div>
                         
                         {/* Scholarship accordion */}
-                        <Accordion type={category.type} /> 
+                        {loading ? (
+                            <p>Loading scholarships...</p>
+                        ) : (
+                            <Accordion type={category.type} scholarships={scholarships} sortBy={sortBy} />
+                        )}
                         
 
                     </section>

@@ -3,14 +3,14 @@ import './styles/App.css'
 
 import Scholarships from './pages/Scholarships.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
-import NotFound from './pages/NotFound.jsx'
-import StudentLogin from './pages/StudentLogin.jsx'
-import AdminLogin from './pages/AdminLogin.jsx'
-import StaffDashboard from './pages/StaffDashboard.jsx'
-import StudentDashboard from './pages/StudentDashboard.jsx'
 import Posts from './pages/postManagement.jsx'
 import PostDetails from './pages/postDetails.jsx'
-import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
+import NotFound from './pages/NotFound.jsx'
+import StaffDashboard from './pages/StaffDashboard.jsx'
+import ScholarshipRequirements from './pages/ScholarshipRequirements.jsx'
+import StudentDashboard from './pages/StudentDashboard.jsx'
+import StudentLogin from './pages/StudentLogin.jsx'
+import AdminLogin from './pages/AdminLogin.jsx'
 
 function App() {
 
@@ -23,6 +23,9 @@ function App() {
 			<Route path="/" element={ <Scholarships/> } />
 			<Route path="/posts" element={ <Posts/> } />
             <Route path="/postDetails" element={ <PostDetails/> } />
+			<Route path='/staffDashboard' element={<StaffDashboard/>} />
+			{/* application page in figma */}
+			<Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
 			<Route path='/admin/dashboard' element={<StaffDashboard/>} />
 			<Route path='/admin/accountManagement' element={<AdminAccountManagement/>} />
 			<Route path='/student/dashboard' element={<StudentDashboard/>} />
