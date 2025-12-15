@@ -1,10 +1,10 @@
 from django.db import models
 
 class Scholarship(models.Model):
-    # SCHOLARSHIP_TYPE_CHOICES = [
-    #     ('government', 'Government-Funded'),
-    #     ('private', 'Private'),
-    # ]
+    SCHOLARSHIP_TYPE_CHOICES = [
+        ('government', 'Government-Funded'),
+        ('private', 'Private'),
+    ]
     
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
@@ -12,10 +12,10 @@ class Scholarship(models.Model):
     qualifications = models.TextField()
     benefits = models.TextField()
     instructions = models.TextField()
-    # type = models.CharField(max_length=20, choices=SCHOLARSHIP_TYPE_CHOICES)
+    type = models.CharField(max_length=20, choices=SCHOLARSHIP_TYPE_CHOICES)
     requirements = models.TextField()
     start_date = models.DateField()    
-    #startdate must be ≤ deadline in serializer
+    # start_date must be ≤ deadline in serializer
     end_date = models.DateField()
     deadline = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)

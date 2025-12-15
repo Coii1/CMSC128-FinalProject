@@ -4,70 +4,45 @@ import { FaChevronUp } from "react-icons/fa"
 import { FaChevronDown } from 'react-icons/fa'
 import '../styles/Scholarships.css'
 
-// temp data to be replaced with database
-const scholarships = [
-    { id: 1, 
-        type: "government", 
-        name: "ONE UPV Scholarship", 
-        slots: 5, 
-        qualifications: "Must be a full-time student in their SECOND-year term of a four or five-year degree.", 
-        documents: "Form D - Scholarship Application Form /n Current resume",
-        benefits: "PHP 25, 000 per student",
-        instructions: "All information must be TYPED. Handwritten and incomplete submissions will be rejected.",
-        deadline: "2025-12-05",
-        datePosted: "2025-10-15"
-    },
-        
-    { id: 2, 
-        type: "government", 
-        name: "DOST-SEI Scholarship", 
-        slots: 10, 
-        description: "For STEM students with exceptional merit.", 
-        qualifications: "Must be a full-time student in their SECOND-year term of a four or five-year degree.", 
-        documents: "Form D - Scholarship Application Form /n Current resume",
-        benefits: "PHP 25, 000 per student",
-        instructions: "All information must be TYPED. Handwritten and incomplete submissions will be rejected.",
-        deadline: "2025-9-05",
-        datePosted: "2025-2-17"
-    },
-    { id: 3, 
-        type: "private", 
-        name: "SM Foundation Scholarship", 
-        slots: 5, 
-        description: "Financial assistance for deserving students." ,
-        qualifications: "Must be a full-time student in their SECOND-year term of a four or five-year degree.", 
-        documents: "Form D - Scholarship Application Form /n Current resume",
-        benefits: "PHP 25, 000 per student",
-        instructions: "All information must be TYPED. Handwritten and incomplete submissions will be rejected.",
-        deadline: "2025-12-05",
-        datePosted: "2025-10-15"
-    },
-    { id: 4, 
-        type: "private", 
-        name: "Ayala Foundation Scholarship", 
-        slots: 4, 
-        description: "Scholarship for students with leadership potential.",
-        qualifications: "Must be a full-time student in their SECOND-year term of a four or five-year degree.", 
-        documents: "Form D - Scholarship Application Form /n Current resume",
-        benefits: "PHP 25, 000 per student",
-        instructions: "All information must be TYPED. Handwritten and incomplete submissions will be rejected.",
-        deadline: "2025-12-05",
-        datePosted: "2025-10-15"
-    },
-    ];
+function Accordion({ type, scholarships, sortBy }) {
+    // Helper function to split text by newlines into array
+    const formatTextToList = (text) => {
+        if (!text) return [];
+        return text.split('\n').filter(line => line.trim() !== '');
+    };
 
-function Accordion({ type, sortBy }) {
-    // const filtered = scholarships.filter(s => s.type === type);
-    const filtered = scholarships.filter(s => s.type === type)
-                    .sort((a, b) => {
-                        if (sortBy === "datePosted") {
-                            return new Date(b.datePosted) - new Date(a.datePosted);
-                        }
-                        if (sortBy === "deadline") {
-                            return new Date(a.deadline) - new Date(b.deadline);
-                        }
-                        return 0;
-                    });
+    // Helper function to parse requirements JSON string
+    const parseRequirements = (requirementsStr) => {
+        try {
+            const parsed = JSON.parse(requirementsStr);
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+            console.error("Error parsing requirements:", error);
+            return [];
+        }
+    };
+
+    // Normalize type string by removing hyphens and converting to lowercase
+    const normalizeType = (typeStr) => {
+        return typeStr?.toLowerCase().replace(/-/g, '').replace(/\s+/g, '').trim() || '';
+    };
+
+    const filtered = scholarships.filter(s => {
+        const scholarshipType = normalizeType(s.type);
+        const filterType = normalizeType(type);
+        console.log(`Comparing: "${scholarshipType}" starts with "${filterType}"?`, scholarshipType.startsWith(filterType));
+        return scholarshipType.startsWith(filterType);
+    }).sort((a, b) => {
+        if (sortBy === "datePosted") {
+            return new Date(b.created_at) - new Date(a.created_at);
+        }
+        if (sortBy === "deadline") {
+            return new Date(a.deadline) - new Date(b.deadline);
+        }
+        return 0;
+    });
+
+    console.log(`Filtered scholarships for type "${type}":`, filtered.length);
 
     const [openIndex, setOpenIndex] = useState(null);
 
@@ -86,7 +61,7 @@ function Accordion({ type, sortBy }) {
                                 {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
                             </span>
 
-                            <h3>{scholarship.name}</h3>
+                            <h3>{scholarship.title}</h3>
                         </div>
                         
                         <div className='slotsContainer'>
@@ -99,22 +74,32 @@ function Accordion({ type, sortBy }) {
                         <div className="accordionBody scholarshipContent">
                             <h5>Qualifications</h5>
                             <ul>
-                                <li className='qualifications'>{scholarship.qualifications}</li>
+                                {formatTextToList(scholarship.qualifications).map((item, idx) => (
+                                    <li key={idx} className='qualifications'>{item}</li>
+                                ))}
                             </ul>
 
                             <h5>Required Documents</h5>
                             <ul>
-                                <li className='documents'>{scholarship.documents}</li>
+                                {parseRequirements(scholarship.requirements).map((req, idx) => (
+                                    <li key={idx} className='documents'>
+                                        {req.reqName} ({req.ftp})
+                                    </li>
+                                ))}
                             </ul>
 
                             <h5>Benefits</h5>
                             <ul>
-                                <li className='benefits'>{scholarship.benefits}</li>
+                                {formatTextToList(scholarship.benefits).map((item, idx) => (
+                                    <li key={idx} className='benefits'>{item}</li>
+                                ))}
                             </ul>
 
                             <h5>Instructions</h5>
                             <ul>
-                                <li className='instructions'>{scholarship.instructions}</li>
+                                {formatTextToList(scholarship.instructions).map((item, idx) => (
+                                    <li key={idx} className='instructions'>{item}</li>
+                                ))}
                             </ul>
 
                             <h5>Deadline</h5>

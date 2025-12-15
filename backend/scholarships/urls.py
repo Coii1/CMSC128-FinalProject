@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import ScholarshipListCreateView
 
 urlpatterns = [
-    path("", views.ScholarshipListCreateView.as_view(), name="scholarship-list-create"),
+    path("", ScholarshipListCreateView.as_view(), name="scholarship-list-create"),
 ]
