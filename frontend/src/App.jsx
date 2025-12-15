@@ -27,21 +27,24 @@ function App() {
 			{/* application page in figma */}
 			<Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
 			<Route path='/admin/dashboard' element={<StaffDashboard/>} />
+			<Route path='/admin/accountManagement' element={<AdminAccountManagement/>} />
 			<Route path='/student/dashboard' element={<StudentDashboard/>} />
-
-
+			
 			{/* Protected routes - Pages that should only be accessed after signing up/logging in*/}
 			{/* <Route path='/staffDashboard' element={
 				<ProtectedRoute allowedRoles={ ["admin"] }>
 					
 					<StaffDashboard />
+					<AdminAccountManagement />
 
 				</ProtectedRoute>
 			} /> */}
 			
             {/* <Route path='/studentDashboard' element={
 				<ProtectedRoute allowedRoles={ ["student"] }>
+				
 					<StudentDashboard />
+
 				</ProtectedRoute>
 			} /> */}
 

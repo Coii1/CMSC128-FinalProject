@@ -38,8 +38,8 @@ function DashboardHeader() {
                         
                     </ul>
                 </div>
-                {/* <Link to="/login">Login</Link> */}
-                <Link to="/signup" className='signupBtn'>Sign Up</Link>
+               
+                {/* <Link to="/signup" className='signupBtn'>Sign Up</Link> */}
             </nav>
 
         </header>

@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-/* ROOT class to declare globals */
 :root {
     --maroon: #8A1538;
     --forest-green: #00573F;
@@ -9,27 +7,34 @@
     --black: #000000;
 }
 
-/* HEADER FOR LOGGED IN PAGES */
+button:focus,
+button:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent !important;
+}
 
+/* MAIN HEADER LAYOUT */
 .header {
     width: 100%;
     height: 8.1875rem;
     flex-shrink: 0;
     border-radius: 0 0 10px 10px;
-    background: var(--MAROON, #8A1538);
+    background: var(--maroon); 
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.25);
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
 }
 
-.headerLeft {
+.headerLeft,
+.roboto-header-right {
     display: flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap: 15px;
+    align-items: center;
+    gap: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
 }
 
 .upvLogo {
@@ -38,31 +43,22 @@
     border-radius: 50%;
 }
 
-.roboto-header-right,
-.headerLeft {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    font-family: "Roboto", sans-serif;
-    font-size: 18px;
-}
-
 .headerLeft a {
     font-weight: 400;
     color: white;
     text-decoration: none;
     padding-left: 20px;
+    transition: color 0.2s ease;
 }
 
 .headerLeft a:hover {
-  color: var(--yellow);
+    color: var(--yellow);
 }
 
-.dropBtn {
+/* DROPDOWN BUTTONS */
+.headerLeft .downloadDropBtn {
     display: inline-flex;
-    height: 65px;
     align-items: center;
-    gap: 5px;
     flex-shrink: 0;
     background: none;
     border: none;
@@ -70,19 +66,39 @@
     font-family: "Roboto", sans-serif;
     font-size: 18px;
     font-weight: 400;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.dropBtn:hover {
+.headerLeft .downloadDropBtn:hover {
     color: var(--yellow);
+    background-color: transparent;
 }
 
-button:focus,
-button:active {
-  outline: none;
-  box-shadow: none;
+.headerLeft .downloadDropBtn:focus,
+.headerLeft .downloadDropBtn:active,
+.headerLeft .downloadDropBtn[aria-expanded="true"],
+.show > .downloadDropBtn {
+    color: var(--yellow) !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.notifBtn, .profileBtn {
+/* DROPDOWN MENU ITEMS */
+.headerLeft .dropdown-menu .dropdown-item {
+    color: var(--black) !important;
+    padding: 4px 16px;
+}
+
+.headerLeft .dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: var(--black) !important;
+}
+
+/* NOTIF AND PROFILE BUTTONS */
+.notifBtn, 
+.profileBtn {
     border: none;
     outline: none;
     background: none;
@@ -96,12 +112,13 @@ button:active {
     transition: transform 0.1s ease, color 0.2s ease, filter 0.2s ease;
 }
 
-.notifBtn:hover {
+.notifBtn:hover,
+.profileBtn:hover {
     color: var(--yellow);
-
 }
 
-.notifBtn:active {
+.notifBtn:active,
+.profileBtn:active {
     transform: translateY(2px);
     filter: brightness(0.9);
 }
