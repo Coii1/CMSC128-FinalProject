@@ -43,11 +43,11 @@ function App() {
 			<Route path='/admin/accountManagement' element={<AdminAccountManagement/>} />
 			<Route path='/student/dashboard' element={<StudentDashboard/>} /> */}
 			
-			<Route path='/ScholarshipRequirements' element={
+			{/* <Route path='/ScholarshipRequirements' element={
 				<ProtectedRoute>
 					<AdminAccountManagement/>
 				</ProtectedRoute>
-			} /> 
+			} />  */}
 
 			<Route path='/ScholarshipRequirements' element={
 				<ProtectedRoute>
