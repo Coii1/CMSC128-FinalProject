@@ -13,7 +13,7 @@ class StudentProfile(models.Model):
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=20)
     course = models.CharField(max_length=100)
-    income_bracket = models.CharField(max_length=50)
+    income_bracket = models.PositiveIntegerField()
 
     def __str__(self):
         return f"{self.user.username} (Student)"
