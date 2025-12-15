@@ -6,9 +6,9 @@ from .models import Application
 from .serializers import StudentApplicationSerializer, AdminApplicationSerializer
 from users.models import StudentProfile
 
-#GET returns all applications of student
-#POST creates a new application for the student
-#did not yet enforce validation that application is created  only when the documents are all uploaded
+# GET /applications/student/
+# - GET: returns all applications of the logged-in student
+# - POST: creates a new application for the logged-in student for a given scholarship
 class StudentApplicationListCreateView(generics.ListCreateAPIView):
 	serializer_class = StudentApplicationSerializer
 	permission_classes = [IsAuthenticated]
@@ -31,8 +31,8 @@ class StudentApplicationListCreateView(generics.ListCreateAPIView):
 		student = self._get_student_profile()
 		serializer.save(student=student)
 
-
-#GET /applications/student/<pk>/ retrieves a specific application. pk is the application id
+# GET /applications/student/<pk>/
+# - GET: retrieves a specific application that belongs to the logged-in student (pk = application id)
 class StudentApplicationDetailView(generics.RetrieveAPIView):
 	serializer_class = StudentApplicationSerializer
 	permission_classes = [IsAuthenticated]
@@ -52,6 +52,8 @@ class StudentApplicationDetailView(generics.RetrieveAPIView):
 		)
 
 
+# GET /applications/admin/
+# - GET: list all applications (admin only), with optional filters by scholarship_id and status
 class AdminApplicationListView(generics.ListAPIView):
 	serializer_class = AdminApplicationSerializer
 	permission_classes = [IsAdminUser]
@@ -72,6 +74,9 @@ class AdminApplicationListView(generics.ListAPIView):
 		return qs
 
 
+# GET /applications/admin/<pk>/
+# - GET: retrieve a specific application (admin only)
+# - PATCH: update status and remarks of an application (admin only)
 class AdminApplicationDetailView(generics.RetrieveUpdateAPIView):
 	serializer_class = AdminApplicationSerializer
 	permission_classes = [IsAdminUser]

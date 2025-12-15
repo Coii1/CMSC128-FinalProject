@@ -11,6 +11,9 @@ from applications.models import Application
 from users.models import StudentProfile
 
 
+# GET /documents/student/applications/<application_id>/documents/
+# - GET: list all documents for a specific application of the logged-in student
+# - POST: upload a new document for that application (student only)
 class StudentDocumentListCreateView(generics.ListCreateAPIView):
 	serializer_class = StudentDocumentUploadSerializer
 	permission_classes = [IsAuthenticated]
@@ -38,6 +41,8 @@ class StudentDocumentListCreateView(generics.ListCreateAPIView):
 		serializer.save(application=application)
 
 
+# GET /documents/admin/documents/
+# - GET: list all documents (admin only), with optional filters by application_id, scholarship_id, and verified
 class AdminDocumentListView(generics.ListAPIView):
 	serializer_class = AdminDocumentSerializer
 	permission_classes = [IsAdminUser]
@@ -62,6 +67,8 @@ class AdminDocumentListView(generics.ListAPIView):
 		return qs
 
 
+# PATCH /documents/admin/documents/<pk>/
+# - PATCH: update verification status of a specific document (admin only)
 class AdminDocumentVerifyView(generics.UpdateAPIView):
 	serializer_class = AdminDocumentSerializer
 	permission_classes = [IsAdminUser]
