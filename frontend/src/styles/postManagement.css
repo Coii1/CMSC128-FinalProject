@@ -1,19 +1,117 @@
-/* postManagement.css */
+:root {
+    --maroon: #8A1538;
+    --forest-green: #00573F;
+    --yellow: #FFB81C;
+    --black: #000000;
+}
 
-.signupBtn {
+.postDetailsBtn {
     background: var(--forest-green);
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
+    width: fit-content; 
 }
 
-.signupBtn:hover {
+.postDetailsBtn:hover {
     opacity: 0.9;
     background-color: #125f49;
+    color: white;
+}
+
+.middleDivision h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--maroon, #8A1538); 
+    font-family: Montserrat, sans-serif;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 2.5rem;
 }
 
 .middleDivision {
-    height: 120.875rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    margin-bottom: 5rem;
+    padding: 0 20px;
+}
+
+.scholarship-table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    border-collapse: separate; 
+    border-spacing: 0;
+    border: 1px solid #dee2e6;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden; 
+}
+
+.bg-maroon, 
+.bg-maroon th {
+    background-color: var(--maroon, #8A1538) !important;
+    color: white !important;
+}
+
+.scholarship-table thead th {
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    border-bottom: none; 
+}
+
+.scholarship-table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.scholarship-table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.scholarship-table tbody td {
+    border-bottom: 1px solid #dee2e6;
+    color: #000;
+    font-family: Roboto;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.scholarship-table .actions {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.icon-btn.edit {
+    color: #000;
+}
+
+.icon-btn.delete {
+    color: var(--maroon);
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+}
+
+.scholarship-table tbody tr:hover {
+    background-color: #f8f8f8;
 }

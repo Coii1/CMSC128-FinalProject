@@ -22,7 +22,7 @@ function StaffDashboard() {
                     </div>
                 </Link>
 
-                <Link to="/postDetails" className="dashboardCard card-maroon">
+                <Link to="/posts" className="dashboardCard card-maroon">
                     <div className="card-body">
                         <h5 className="card-title">Post Scholarships/<br/>Opportunities</h5>
                     </div>
