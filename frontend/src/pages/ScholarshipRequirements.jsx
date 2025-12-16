@@ -1,53 +1,39 @@
 //Application.jsx
-import React, { useState, useRef , useEffect, Fragment } from 'react'
-import api from '../api.js'
+import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
+import '../styles/scholarshipRequirements.css';
 
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
-import '../styles/scholarshipRequirements.css'
-
-// Our app
 function ScholarshipRequirements() {
+  const location = useLocation();
   const fileInputRef = useRef(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
-
-
-  const handleButtonClick = () => {
-    fileInputRef.current.click(); // Opens the file dialog, click() is built in 
-  };
-
-  const [requirements, setRequirements] = useState([
-]);
-
-  const [loading, setLoading] = useState(true)
+  const [requirements, setRequirements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [scholarship, setScholarship] = useState(null);
 
   useEffect(() => {
-  const fetchScholarship = async () => {
-    try {
-      const response = await api.get('/scholarships');
-      // Example: get scholarship with id = 2
-      const scholarship = response.data.find(s => s.id === 2);
-      if (!scholarship) return;
-      // Parse requirements string into JS array
-      const parsedRequirements = JSON.parse(scholarship.requirements);
-
-      // Convert DB format → React format
-      const formattedRequirements = parsedRequirements.map((req, index) => ({
-        id: index + 1,
-        name: req.reqName,
-        ftp: req.ftp,
-        files: [],
-        feedback: ""
-      }));
-      setRequirements(formattedRequirements);
+    if (location.state && location.state.scholarship) {
+      const sch = location.state.scholarship;
+      setScholarship(sch);
+      try {
+        const parsedRequirements = JSON.parse(sch.requirements);
+        const formattedRequirements = parsedRequirements.map((req, index) => ({
+          id: index + 1,
+          name: req.reqName,
+          ftp: req.ftp,
+          files: [],
+          feedback: ""
+        }));
+        setRequirements(formattedRequirements);
+      } catch (e) {
+        setRequirements([]);
+      }
       setLoading(false);
-    } catch (error) {
-      console.error("Error fetching scholarship:", error);
+    } else {
+      setLoading(false);
     }
-  };
-
-  fetchScholarship();
-}, []);
+  }, [location.state]);
 
 
   const handleFileChange = (id, event) => {

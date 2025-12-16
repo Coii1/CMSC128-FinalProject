@@ -11,6 +11,7 @@ import ScholarshipRequirements from './pages/ScholarshipRequirements.jsx'
 import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
+import ApplicationManagement from './pages/ApplicationManagement.jsx'
 // import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
@@ -25,7 +26,13 @@ function App() {
 			<Route path='/studentLogin' element={ <StudentLogin/> } />
 			<Route path='/adminLogin' element={ <AdminLogin/> } />
 			<Route path="/" element={ <Scholarships/> } />
+
 			{/* Protected routes - require login */}
+			<Route path="/applicationManagement" element={
+				<ProtectedRoute>
+					<ApplicationManagement />
+				</ProtectedRoute>
+			} />
 			<Route path="/posts" element={
 				<ProtectedRoute>
 					<Posts />
