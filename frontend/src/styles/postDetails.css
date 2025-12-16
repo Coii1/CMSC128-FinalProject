@@ -72,7 +72,7 @@
     font-size: 14px;
 }
 
-#title {
+#title, #type {
 	width: 39.375rem;
 }
 
@@ -118,17 +118,18 @@
 }
 
 .requirement-section{
-	width: 60.9375rem;
+	width: 50rem;
 	border: 1px solid rgb(118, 118, 118);       /* creates a visible box border */
   	border-radius: 5px;            
 }
 
 .option {
 	display: flex;
-	width: 100%;
+	width: 62.5rem;
 	height: 2.8125rem;
 	padding-right: 1.9375rem;
-	margin-right: 0 0 50rem 0;
+	margin-top: 1rem;
+	margin-bottom: 5rem;
 	justify-content: flex-end;
 	align-items: center;
 	gap: 0.625rem;
@@ -139,7 +140,7 @@
 	background-color: var(--forest-green) !important;
 }
 
-.addRequirementBtn, .postBtn, .cancelBtn {
+.addRequirementBtn, .postBtn, .cancelBtn, .updateBtn {
 	border-radius: 0.625rem;
 	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.25);
 	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
@@ -147,7 +148,8 @@
 
 .addRequirementBtn:hover,
 .postBtn:hover,
-.cancelBtn:hover {
+.cancelBtn:hover,
+.updateBtn:hover {
     transform: scale(1.05);
   	box-shadow: 0 6px 10px rgba(0,0,0,0.3);
 }
@@ -157,9 +159,6 @@
 .cancelBtn:active {
 	transform: translateY(1px);
 }
-
-
-
 
 /* The popup form - hidden by default */
 .form-popup {
@@ -172,14 +171,12 @@
   z-index: 9;
 }
 
-/* Add styles to the form container */
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
 
-/* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
   width: 100%;
   padding: 15px;
@@ -188,13 +185,11 @@
   background: #f1f1f1;
 }
 
-/* When the inputs get focus, do something */
 .form-container input[type=text]:focus, .form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
 
-/* Set a style for the submit/login button */
 .form-container .btn {
   background-color: #04AA6D;
   color: white;
@@ -206,14 +201,31 @@
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
 }
 
-/* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
 
+.updateBtn {
+    width: fit-content !important; 
+    min-width: 9rem; 
+    padding: 10px 20px; 
+    background-color: var(--forest-green) !important;
+    white-space: nowrap;
+    border-radius: 0.625rem;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
 
+.updateBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+    opacity: 0.9;
+}
+
+.updateBtn:active {
+    transform: translateY(1px);
+}

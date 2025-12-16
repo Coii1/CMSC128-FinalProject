@@ -13,7 +13,12 @@
 	margin-bottom: 2.5rem;
 }
 
-
+.upload-button-with-name{
+  display: flex;
+  align-items: center;
+  /* gap: -19px; */
+  /* margin-left: 20px; */
+}
 
 .filepond-button{
   padding: 10px 10px;
@@ -29,21 +34,51 @@
   position: relative;
   right: 10px;
   left: 92%;
-  /* top: 50%; */
-  /* bottom: 50%; */
-
-
+  margin-top: 5px;
+  margin-right: 20px;
 }
 
-/* .filepond-button:hover{
-  background-color: var(--MAROON, #8A1538); 
-}  */
+.uploaded-file-name{
+  right: 10px;
+  margin-left: 1200px;
+  margin-top: 20px;
+}
+
+
+.submit-requirement-button{
+  padding: 10px 10px;
+  background-color: var(--MAROON, #8A1538);    
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 300;
+  transition: background-color 0.2s ease;
+  
+  position: relative;
+  right: 10px;
+  left: 92%;
+  margin-bottom: 30px;
+}
+
 
 .scholarshipReqBlock{
-  border: 1px solid #020202;;
+  border: 3px solid #020202;;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #c7c7c7;
   position: static;
+  height: 160px
+}
 
+.requirement-name{
+  font-weight: 1000;
+  font-size: 30px;
+  margin-left: -15px;
+}
+
+.requirement-feedback{
+  font-size: 16px;
+  margin-left: 70px;
 }

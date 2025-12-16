@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { FaChevronDown } from 'react-icons/fa'
 import upvLogo from '../assets/upvlogo.png'
 import '../styles/DashboardHeader.css'
-
 import StudentLogin from '../pages/StudentLogin'
 import AdminLogin from '../pages/AdminLogin'
 
@@ -14,18 +13,17 @@ function DashboardHeader() {
             <nav className='roboto-header-right'>
                 <Link className="home" to='/'>Home</Link>
 
-                <div className="dropdown">
+                {/* COMMENTED OUT DOWNLOADS */}
+                {/* <div className="dropdown">
                     <button className="downloadDropBtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Downloads
                     </button>
-                    {/* for downloadable files */}
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">PDF 1</a></li>
                         <li><a className="dropdown-item" href="#">PDF 2</a></li>
                         <li><a className="dropdown-item" href="#">PDF 3</a></li>
                     </ul>
-                </div>
-
+                </div> */}
 
                 <div className="dropdown">
                     <a className="loginDropBtn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,7 +36,7 @@ function DashboardHeader() {
                         
                     </ul>
                 </div>
-               
+               {/* SIGN UP BUTTON REMOVED */}
                 {/* <Link to="/signup" className='signupBtn'>Sign Up</Link> */}
             </nav>
 
