@@ -127,8 +127,8 @@ function ScholarshipRequirements() {
 export default ScholarshipRequirements
 
 
-// const [requirements, setRequirements] = useState([
+// cons[requirements, setRequirements] = useState([
 //   // { id: 1, name: "Birth Certificate", feedback: "", files: [] },
 //   // { id: 2, name: "Transcript of Records", feedback: "", files: [] },
 //   // { id: 3, name: "Certificate of Indigency", feedback: "", files: [] }
-// ]);
+// ]);t 
