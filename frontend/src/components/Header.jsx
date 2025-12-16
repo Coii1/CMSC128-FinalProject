@@ -5,14 +5,15 @@ import upvLogo from '../assets/upvlogo.png';
 import '../styles/Header.css';
 
 function Header() {
-    const navigrate = useNavigate()
+    const navigate = useNavigate()
 
     const userRole = localStorage.getItem('userRole')
 
     const dashboardPage = userRole === 'admin' ? '/adminDashboard' : '/studentDashboard'
 
     const logoutHandler = () => {
-        Navigate('/')
+        localStorage.clear()
+        navigate('/', { replace: true })
     }
 
     return(
@@ -46,40 +47,35 @@ function Header() {
                 </div>
 
                 <div className='profile'>
-                    {/* <Link to="/profile" className='profileBtn' target='_blank' rel='noreferrer'>
-                        <CgProfile />
-                    </Link> */}
                     <div className='dropdown profile'>
                     
-                    <a className='profileBtn dropdown-toggle d-flex align-items-center' href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <CgProfile />
-                    </a>
+                        <a className='profileBtn d-flex align-items-center' href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <CgProfile />
+                        </a>
 
-                    <ul className="dropdown-menu dropdown-menu-end">
-                        
-                        <li>
-                            <Link className="dropdown-item" to="/profile">Profile</Link>
-                        </li>
+                        <ul className="dropdown-menu dropdown-menu-end">
+                            
+                            <li>
+                                <Link className="dropdown-item" to="/profile">Profile</Link>
+                            </li>
 
-                        <li>
-                            <Link className="dropdown-item" to={dashboardPage}>
-                                Dashboard
-                            </Link>
-                        </li>
+                            <li>
+                                <Link className="dropdown-item" to={dashboardPage}>
+                                    Dashboard
+                                </Link>
+                            </li>
 
-                        <li><hr className="dropdown-divider" /></li>
+                            <li><hr className="dropdown-divider" /></li>
 
-                        <li>
-                            <button className="dropdown-item" onClick={logoutHandler}>
-                                Logout
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-
+                            <li>
+                                <button className="dropdown-item" onClick={logoutHandler}>
+                                    Logout
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div> 
             </nav>
-
         </header>
     )
 }

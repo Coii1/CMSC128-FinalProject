@@ -46,7 +46,7 @@ function Form( { userType } ) {
             }
 
             localStorage.setItem('userType', determinedRole)
-            navigate(determinedRole === 'student' ? '/' : '/adminDashboard')
+            navigate(determinedRole === 'student' ? '/applicationMgmt' : '/adminDashboard')
 
         } catch (error) {
             console.error("Login error:", error)

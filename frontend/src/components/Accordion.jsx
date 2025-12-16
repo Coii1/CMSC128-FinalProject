@@ -107,17 +107,15 @@ function Accordion({ type, scholarships, sortBy }) {
                                 <li className='deadline'>{scholarship.deadline}</li>
                             </ul>
 
-                                                        <div className="applyBtnWrapper">
-                                                                <Link 
-                                                                    to={{
-                                                                        pathname: `/ScholarshipRequirements/${scholarship.id}`
-                                                                    }}
-                                                                    state={{ scholarship }}
-                                                                    className="applyBtn"
-                                                                >
-                                                                        APPLY NOW
-                                                                </Link>
-                                                        </div>
+                            <div className="applyBtnWrapper">
+                                <Link 
+                                    to={{ pathname: `/scholarshipReqs/${scholarship.id}`}}
+                                    state={{ scholarship }}
+                                    className="applyBtn"
+                                >
+                                    APPLY NOW
+                                </Link>
+                            </div>
 
                         </div>
                     )}
