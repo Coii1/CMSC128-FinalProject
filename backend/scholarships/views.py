@@ -3,6 +3,10 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .models import Scholarship
 from .serializers import ScholarshipSerializer
 
+
+# GET /scholarships/
+# - GET: list all scholarships (public, no authentication required)
+# - POST: create a new scholarship (admin only)
 class ScholarshipListCreateView(generics.ListCreateAPIView):
     queryset = Scholarship.objects.all().order_by('-created_at')
     serializer_class = ScholarshipSerializer
