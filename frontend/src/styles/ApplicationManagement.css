@@ -13,3 +13,133 @@
 	margin-bottom: 2.5rem;
     left: 0%;
 }
+
+.applicationManagement {
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.appMgmtContainer {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 32px 24px 24px 24px;
+}
+
+.appMgmtTitle {
+  color: #a11d3a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.appMgmtTableWrapper {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.appMgmtTableHeader, .appMgmtRow {
+  display: flex;
+  align-items: center;
+  background: #a11d3a;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+.appMgmtTableHeader {
+  border-bottom: 1px solid #ccc;
+  background: #a11d3a;
+}
+
+.appMgmtCol {
+  flex: 1;
+  padding: 0 8px;
+}
+.scholarshipCol { flex: 2; }
+.studentCol { flex: 2; }
+.actionCol { flex: 0.5; text-align: right; }
+
+.appMgmtAccordion {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.appMgmtRow {
+  background: #fff;
+  color: #a11d3a;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.accordionIcon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  color: #a11d3a;
+  cursor: pointer;
+}
+
+.studentRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.studentIcon {
+  font-size: 1.1rem;
+  margin-right: 6px;
+}
+.studentName {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.deleteIcon {
+  color: #a11d3a;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.appMgmtStudentAccordion {
+  background: #faf6f8;
+  padding: 0 32px 16px 64px;
+}
+.appMgmtStudentDetails {
+  margin-top: 10px;
+}
+.appMgmtDocsTable {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.appMgmtDocsTable td {
+  padding: 4px 8px;
+  color: #a11d3a;
+}
+.markIncomplete {
+  color: #c0392b;
+  cursor: pointer;
+  text-align: right;
+}
+.addRemarks {
+  color: #a11d3a;
+  margin: 10px 0 8px 0;
+  cursor: pointer;
+  font-weight: 500;
+}
+.sendDocumentBtn {
+  background: #a11d3a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.sendDocumentBtn:hover {
+  background: #7a142a;
+}
