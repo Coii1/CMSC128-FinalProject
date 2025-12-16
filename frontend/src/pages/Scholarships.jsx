@@ -8,7 +8,28 @@ import '../styles/Scholarships.css'
 
 function Scholarships() {
     const contentRef = useRef(null)
+<<<<<<< Updated upstream
     const [sortBy, setSortBy] = useState("")
+=======
+    const [sortBy, setSortBy] = useState("datePosted")
+    const [scholarships, setScholarships] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        fetchScholarships();
+    }, []);
+
+    const fetchScholarships = async () => {
+        try {
+            const response = await api.get('/scholarships');
+            setScholarships(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error fetching scholarships:", error);
+            setLoading(false);
+        }
+    }
+>>>>>>> Stashed changes
 
     const scrollToContent = () => {
         if (contentRef.current) {
@@ -49,6 +70,7 @@ function Scholarships() {
                                     <option value="datePosted">Date Posted</option>
                                     <option value="deadline">Deadline</option>
                                 </select>
+                                
                             </div>
                         </div>
                         
