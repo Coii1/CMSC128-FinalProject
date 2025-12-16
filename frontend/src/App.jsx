@@ -15,6 +15,7 @@ import ApplicationManagement from './pages/ApplicationManagement.jsx'
 // import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
+import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
 			<Route path='/studentLogin' element={ <StudentLogin/> } />
 			<Route path='/adminLogin' element={ <AdminLogin/> } />
 			<Route path="/" element={ <Scholarships/> } />
+
+
+			<Route path="/home" element={ <ProtectedScholarships/> } />
 
 			{/* Protected routes - require login */}
 			<Route path="/applicationManagement" element={
