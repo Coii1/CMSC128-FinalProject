@@ -216,4 +216,13 @@
   opacity: 1;
 }
 
+.requirement-block {
+	border: 1px solid #767676;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 0;
+	
+}
+
 

@@ -145,8 +145,7 @@ function PostDetails() {
                             <div>
                                 {requirementsList.requirements.map((requirement) => {
                                     return (
-                                        <div>
-                                            <p>for testing, will be removed later on</p>
+                                        <div class = "requirement-block">
                                             <p>{requirement.reqName} </p>
                                             <p>({requirement.ftp})</p>
                                         </div>
