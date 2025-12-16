@@ -1,0 +1,15 @@
+#application-management-header{
+	display: flex;
+	width: 46.375rem;
+	height: 4.125rem;
+	flex-direction: column;
+	justify-content: center;
+	color: var(--MAROON, #8A1538);
+	font-family: Montserrat;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 2.5rem;
+    left: 0%;
+}
