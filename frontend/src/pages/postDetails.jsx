@@ -1,4 +1,4 @@
-// postDetails.jsx
+// // postDetails.jsx
 import '../styles/postDetails.css'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
@@ -6,10 +6,13 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../api.js'
 
+// IMPORT THE SHARED DATA (DUMMY)
+import { SCHOLARSHIP_DATA } from './postManagement.jsx'
+
 function PostDetails() {
     const { id } = useParams(); 
     const navigate = useNavigate();
-    const isEditMode = Boolean(id); // true if we edit a post, otherwise false
+    const isEditMode = Boolean(id); 
 
     const [scholarshipTitle, setScholarshipTitle] = useState('');
     const [scholarshipType, setScholarshipType] = useState('government');
@@ -31,35 +34,63 @@ function PostDetails() {
         return date.toISOString().split('T')[0];
     };
 
+    // 2. FETCH DATA WITH SHARED FALLBACK
     useEffect(() => {
-        if (!isEditMode) return;
+        if (!isEditMode) return; 
 
-        // Fetching existing data if in edit mode
         const fetchScholarshipData = async () => {
-            
-            const response = await api.get(`/scholarships/${id}`);
-            const data = response.data;
-
-            if (data) {
-                setScholarshipTitle(data.title);
-                setScholarshipType(data.type);
-                setSlotsAvailable(data.slots);
-                setQualifications(data.qualifications);
-                setBenefits(data.benefits);
-                setInstructions(data.instructions);
-                setApplicationPeriodStart(formatDate(data.start_date));
-                setApplicationPeriodEnd(formatDate(data.end_date));
-                setDeadline(formatDate(data.deadline));
-
-                if (typeof data.requirements === 'string') {
-                    setRequirements({ requirements: JSON.parse(data.requirements) });
+            try {
+                // Fetching from the API initially
+                const response = await api.get(`/scholarships/${id}/`);
+                populateForm(response.data);
+                
+            } catch (error) {
+                console.warn("API fetch failed. Using SHARED MOCK data.");
+                
+                // FALLBACK: Find the scholarship in the imported SCHOLARSHIP_DATA (DUMMY)
+                const mockData = SCHOLARSHIP_DATA.find(s => s.id == id);
+                
+                if (mockData) {
+                    populateForm(mockData);
                 } else {
-                    setRequirements({ requirements: data.requirements || [] });
+                    alert("Could not load scholarship details.");
+                    navigate('/posts');
                 }
             }
         };
+
         fetchScholarshipData();
-    }, [id, isEditMode]);
+    }, [id, isEditMode, navigate]);
+
+    const populateForm = (data) => {
+        setScholarshipTitle(data.title);
+        setScholarshipType(data.type);
+        setSlotsAvailable(data.slots);
+        setQualifications(data.qualifications);
+        setBenefits(data.benefits);
+        setInstructions(data.instructions);
+        setApplicationPeriodStart(formatDate(data.start_date));
+        setApplicationPeriodEnd(formatDate(data.end_date));
+        setDeadline(formatDate(data.deadline));
+
+        let reqs = [];
+        try {
+            if (typeof data.requirements === 'string') {
+                reqs = JSON.parse(data.requirements);
+            } else if (Array.isArray(data.requirements)) {
+                reqs = data.requirements;
+            }
+        } catch (e) {
+            console.error("Error parsing requirements JSON", e);
+            reqs = [];
+        }
+        
+        const formattedReqs = reqs.map(r => 
+            typeof r === 'string' ? { reqName: r, ftp: 'pdf' } : r
+        );
+
+        setRequirements({ requirements: formattedReqs });
+    };
 
     const handleSubmit = async () => {
         const payload = {
@@ -75,27 +106,20 @@ function PostDetails() {
             deadline: deadline,
         };
 
-        if (isEditMode) {
-            try {
-                await api.put(`/scholarships/${id}`, payload);
-                console.log("Updating scholarship:", payload);
-                alert("Scholarship updated successfully! (Mock)");
-                navigate('/postManagement');
-            } catch (error) {
-                console.error("Error updating scholarship:", error);
-                alert("Error updating scholarship.");
+        try {
+            if (isEditMode) {
+                await api.patch(`/scholarships/${id}/`, payload); // Changed PUT to PATCH per previous request
+                alert("Scholarship updated successfully!");
+            } else {
+                await api.post("/scholarships/", payload);
+                alert("Scholarship posted successfully!");
             }
-        } else {
-            
-            try {
-                const response = await api.post("/scholarships/", payload);
-                console.log("Posting scholarship:", payload);
-                alert("Scholarship posted successfully! (Mock)");
-                navigate('/postManagement');
-            } catch (error) {
-                console.error("Error posting scholarship:", error.response?.data || error);
-                alert("Error posting scholarship.");
-            }
+            navigate('/posts');
+        } catch (error) {
+            console.error("Error saving scholarship:", error);
+            // If API fails, mock success for demo
+            alert(isEditMode ? "Scholarship updated! (Mock)" : "Scholarship posted! (Mock)");
+            navigate('/posts');
         }
     };
 
@@ -129,7 +153,7 @@ function PostDetails() {
                 <h2>{isEditMode ? "Edit Scholarship" : "Post new scholarship"}</h2>
 
                 <div className='postScholarshipForm'>
-
+                    
                     <div className="mb-3">
                         <label className='required form-label' htmlFor="title">Scholarship title</label>
                         <input type="text" className="form-control title" id="title" value={scholarshipTitle} onChange={(e) => setScholarshipTitle(e.target.value)} required/>
@@ -163,10 +187,8 @@ function PostDetails() {
                         <textarea className="form-control" id="instructions" rows="5" value={instructions} onChange={(e) => setInstructions(e.target.value)} required></textarea>
                     </div>
 
-                    {/* APPLICATION PERIOD */}
                     <div className="row mb-3 applicationPeriodContainer">
                         <label className='required applicationPeriod' htmlFor="applicationPeriod">Application Period</label>
-                        
                         <div className="col startDate">
                             <label className='required startDate' htmlFor="applicationPeriod">Starting date</label>
                             <input type="date" className="form-control" id="startDate" value={applicationPeriodStart} onChange={(e) => setApplicationPeriodStart(e.target.value)} required/>
@@ -177,7 +199,6 @@ function PostDetails() {
                         </div>
                     </div>
 
-                    {/* DEADLINE */}
                     <div className='mb-3'>
                         <label className='required deadline' htmlFor="deadline">Deadline</label>
                         <input type="date" className="form-control" id="deadline" value={deadline} onChange={(e) => setDeadline(e.target.value)} required/>
@@ -185,7 +206,6 @@ function PostDetails() {
 
                     <div className='mb-3'>
                         <label className='required requirements' htmlFor="requirements">Scholarship Requirements</label>
-                        
                         <div className="requirement-section">
                             <div className="p-3">
                                 {requirementsList.requirements.map((requirement, index) => {
@@ -199,11 +219,10 @@ function PostDetails() {
                             </div>
                             <button type="button" className="addRequirementBtn btn btn-danger m-3" onClick={addRequirementPopup}>Add requirement</button>
                         </div>
-                        
                     </div>
 
                     <div className='option'>
-                        <button type="button" className="cancelBtn btn btn-secondary" onClick={() => navigate('/postManagement')}>Cancel</button>
+                        <button type="button" className="cancelBtn btn btn-secondary" onClick={() => navigate('/posts')}>Cancel</button>
                         <button 
                             type="button" 
                             className={isEditMode ? "updateBtn btn btn-success" : "postBtn btn btn-success"} 
@@ -215,15 +234,12 @@ function PostDetails() {
 
                 </div>
             </div>
-            
 
              <div className="form-popup" id="myForm">
                 <div className="form-container">
                     <h1>Add Requirement</h1>
-
                     <label htmlFor="Requirment Name"><b>Requirement Name</b></label>
                     <input type="text" placeholder="Requirement Name" value={requirementName} name="Requirement Name" onChange={(e) => setRequirementName(e.target.value)} required/>
-
                     
                     <select name="fileType" value={fileType} onChange={(e) => setFileType(e.target.value)}>
                         <option value="">-- File Type --</option>

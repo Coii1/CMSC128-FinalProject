@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import './styles/App.css'
 
 import Scholarships from './pages/Scholarships.jsx'
@@ -12,8 +12,51 @@ import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
-// import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
+
+
+function App() {
+
+	return (
+		<BrowserRouter>
+			<Routes>
+				{/* Public routes */}
+				<Route path='/studentLogin' element={ <StudentLogin/> } />
+				<Route path='/adminLogin' element={ <AdminLogin/> } />
+				<Route path="/" element={ <Scholarships/> } />
+				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
+
+				{/* Protected routes - require login */}
+				<Route path="/applicationMgmt" element={
+					<ProtectedRoute>
+						<ApplicationManagement />
+					</ProtectedRoute>
+				} />
+				<Route path="/posts" element={
+					<ProtectedRoute>
+						<Posts />
+					</ProtectedRoute>
+				} />
+
+				<Route path="/postDetails" element={
+                    <ProtectedRoute>
+                        <PostDetails />
+                    </ProtectedRoute>
+                } />
+
+                <Route path="/postDetails/:id" element={
+                    <ProtectedRoute>
+                        <PostDetails />
+                    </ProtectedRoute>
+                } />
+
+				<Route path='/staffDashboard' element={
+					<ProtectedRoute allowedRoles={["admin"]}>
+						<StaffDashboard/>
+					</ProtectedRoute>
+				} />
+				{/* application page in figma */}
+				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
 
 import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
 
@@ -97,35 +140,54 @@ function App() {
 			
             {/* <Route path='/studentDashboard' element={
 				<ProtectedRoute allowedRoles={ ["student"] }>
+
 				
-					<StudentDashboard />
+				{/* <Route path='/ScholarshipRequirements' element={
+					<ProtectedRoute>
+						<AdminAccountManagement/>
+					</ProtectedRoute>
+				} />  */}
 
-				</ProtectedRoute>
-			} /> */}
+				<Route path='/scholarshipReqs' element={
+					<ProtectedRoute>
+						<ScholarshipRequirements/>
+					</ProtectedRoute>
+				} /> 
+				<Route path='/adminDashboard' element={
+					<ProtectedRoute allowedRoles={["admin"]}>
+						<StaffDashboard/>
+					</ProtectedRoute>
+				} />
+				<Route path='/studentDashboard' element={
+					<ProtectedRoute allowedRoles={["student"]}>
+						<StudentDashboard/>
+					</ProtectedRoute>
+				} />
 
-			{/* <Route path="/registerandlogout" element={ <RegisterAndLogout/> } /> */}
-			<Route path="*" element={ <NotFound /> } />
-        </Routes>
-    </BrowserRouter>
-  )
-}
 
-// function RegisterAndLogout() {
-// 	// get the user type if student or admin to determine which register page to go to
-// 	const userType = localStorage.getItem('userType')	
+				{/* Protected routes - Pages that should only be accessed after signing up/logging in*/}
+				{/* <Route path='/staffDashboard' element={
+					<ProtectedRoute allowedRoles={ ["admin"] }>
+						
+						<StaffDashboard />
+						<AdminAccountManagement />
 
-// 	localStorage.clear()			// to clear the access and refresh tokens
-	
-// 	if (userType === 'admin') {
-// 		return <Navigate to="/adminregister" replace />
-// 	}
-// 	return <Navigate to="/studentregister" replace />
+					</ProtectedRoute>
+				} /> */}
+				
+				{/* <Route path='/studentDashboard' element={
+					<ProtectedRoute allowedRoles={ ["student"] }>
+					
+						<StudentDashboard />
 
-// }
+					</ProtectedRoute>
+				} /> */}
 
-function Logout() {
-	localStorage.clear()		
-	return <Navigate to="/" />
-}
+				{/* <Route path="/registerandlogout" element={ <RegisterAndLogout/> } /> */}
+				<Route path="*" element={ <NotFound /> } />
+			</Routes>
+		</BrowserRouter>
+	)
+	}
 
 export default App
