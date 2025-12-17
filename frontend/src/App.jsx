@@ -12,6 +12,7 @@ import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
+import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
 
@@ -24,7 +25,6 @@ function App() {
 				<Route path='/studentLogin' element={ <StudentLogin/> } />
 				<Route path='/adminLogin' element={ <AdminLogin/> } />
 				<Route path="/" element={ <Scholarships/> } />
-				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
 
 				{/* Protected routes - require login */}
 				<Route path="/applicationMgmt" element={
@@ -32,18 +32,21 @@ function App() {
 						<ApplicationManagement />
 					</ProtectedRoute>
 				} />
+				
 				<Route path="/posts" element={
 					<ProtectedRoute>
 						<Posts />
 					</ProtectedRoute>
 				} />
 
+				{/* For POSTING a new scholarship */}
 				<Route path="/postDetails" element={
                     <ProtectedRoute>
                         <PostDetails />
                     </ProtectedRoute>
                 } />
 
+				{/* For EDITING a posted scholarsip*/}
                 <Route path="/postDetails/:id" element={
                     <ProtectedRoute>
                         <PostDetails />
@@ -54,32 +57,13 @@ function App() {
 					<ProtectedRoute allowedRoles={["admin"]}>
 						<StaffDashboard/>
 					</ProtectedRoute>
-				} />
-				{/* application page in figma */}
-				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
-
-import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
-
-
-function App() {
-
-  return (
-  	<BrowserRouter>
-        <Routes>
-			{/* Public routes */}
-			<Route path='/studentLogin' element={ <StudentLogin/> } />
-			<Route path='/adminLogin' element={ <AdminLogin/> } />
-			<Route path="/" element={ <Scholarships/> } />
+				} /> 
 
 
 			<Route path="/home" element={ <ProtectedScholarships/> } />
 
 			{/* Protected routes - require login */}
-			<Route path="/applicationManagement" element={
-				<ProtectedRoute>
-					<ApplicationManagement />
-				</ProtectedRoute>
-			} />
+
 			<Route path="/posts" element={
 				<ProtectedRoute>
 					<Posts />
@@ -95,17 +79,6 @@ function App() {
 					<StaffDashboard/>
 				</ProtectedRoute>
 			} />
-			{/* application page in figma */}
-			{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
-			<Route path='/admin/dashboard' element={<StaffDashboard/>} />
-			<Route path='/admin/accountManagement' element={<AdminAccountManagement/>} />
-			<Route path='/student/dashboard' element={<StudentDashboard/>} /> */}
-			
-			{/* <Route path='/ScholarshipRequirements' element={
-				<ProtectedRoute>
-					<AdminAccountManagement/>
-				</ProtectedRoute>
-			} />  */}
 
 			<Route
 				path="/ScholarshipRequirements/:id"
@@ -153,36 +126,7 @@ function App() {
 						<ScholarshipRequirements/>
 					</ProtectedRoute>
 				} /> 
-				<Route path='/adminDashboard' element={
-					<ProtectedRoute allowedRoles={["admin"]}>
-						<StaffDashboard/>
-					</ProtectedRoute>
-				} />
-				<Route path='/studentDashboard' element={
-					<ProtectedRoute allowedRoles={["student"]}>
-						<StudentDashboard/>
-					</ProtectedRoute>
-				} />
-
-
-				{/* Protected routes - Pages that should only be accessed after signing up/logging in*/}
-				{/* <Route path='/staffDashboard' element={
-					<ProtectedRoute allowedRoles={ ["admin"] }>
-						
-						<StaffDashboard />
-						<AdminAccountManagement />
-
-					</ProtectedRoute>
-				} /> */}
 				
-				{/* <Route path='/studentDashboard' element={
-					<ProtectedRoute allowedRoles={ ["student"] }>
-					
-						<StudentDashboard />
-
-					</ProtectedRoute>
-				} /> */}
-
 				{/* <Route path="/registerandlogout" element={ <RegisterAndLogout/> } /> */}
 				<Route path="*" element={ <NotFound /> } />
 			</Routes>
