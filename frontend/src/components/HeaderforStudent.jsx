@@ -50,7 +50,7 @@ function Header() {
             
             <nav className='roboto-header-right'>
                 
-                <Link className='home' to='/home'>Home</Link>
+                <Link className='home' to='/homeforStudents'>Home</Link>
 
                 <div className='notifications'>
                     <button className='notifBtn'>
@@ -69,7 +69,12 @@ function Header() {
                             
                             <li>
                                 <Link className="dropdown-item" to="/profile">Profile</Link>
-                                {/* <Link className="dropdown-item" to="/home">Profile</Link> */}
+                                {/* <Link className="dropdown-item" to="/applicationMgmt">Profile</Link> */}
+                            </li>
+
+                            <li>
+                                {/* <Link className="dropdown-item" to="/profile">Profile</Link> */}
+                                <Link className="dropdown-item" to="/applicationMgmt">Applications</Link>
                             </li>
 
                             {/* <li>

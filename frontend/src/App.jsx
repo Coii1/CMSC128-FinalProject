@@ -15,6 +15,7 @@ import ApplicationManagement from './pages/ApplicationManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
 import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
+import ProtectedScholarshipsforStudents from './pages/ProtectedScholarshipsStudent.jsx'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
 				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
 
 				<Route path="/home" element={ <ProtectedScholarships/> } />
+				<Route path="/homeforStudents" element={ <ProtectedScholarshipsforStudents/> } />
 
 				{/* Protected routes - require login */}
 				<Route path="/applicationMgmt" element={

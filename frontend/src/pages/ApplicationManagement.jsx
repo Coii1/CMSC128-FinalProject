@@ -2,7 +2,7 @@
 // THIS IS WHERE THE LOGGED IN STUDENT CAN VIEW THEIR APPLIED SCHOLARSHIPS
 
 import { useEffect, useState, useRef } from 'react'
-import Header from '../components/Header.jsx'
+import Header from '../components/HeaderforStudent.jsx'
 import Footer from '../components/Footer.jsx'
 import ApplicationAccordion from '../components/ApplicationAccordion.jsx'
 import '../styles/ApplicationManagement.css'
