@@ -9,7 +9,19 @@ function Header() {
 
     const userRole = localStorage.getItem('userRole')
 
-    const dashboardPage = userRole === 'admin' ? '/adminDashboard' : '/studentDashboard'
+    // const rawRole = localStorage.getItem('userRole');
+    // const userRole = rawRole ? rawRole.toLowerCase() : '';
+
+    // console.log("Current User Role in Header:", userRole);
+    // let dashboardPage = '/'
+
+    // if (userRole === 'admin') {
+    //     dashboardPage = '/staffDashboard'; // Or '/adminDashboard' based on your App.jsx
+    // } else if (userRole === 'student') {
+    //     dashboardPage = '/applicationMgmt'; 
+    // }
+
+    // const dashboardPage = userRole === 'Admin' ? '/adminDashboard' : '/applicationMgmt'
 
     const logoutHandler = () => {
         localStorage.clear()
@@ -59,11 +71,11 @@ function Header() {
                                 <Link className="dropdown-item" to="/profile">Profile</Link>
                             </li>
 
-                            <li>
+                            {/* <li>
                                 <Link className="dropdown-item" to={dashboardPage}>
                                     Dashboard
                                 </Link>
-                            </li>
+                            </li> */}
 
                             <li><hr className="dropdown-divider" /></li>
 

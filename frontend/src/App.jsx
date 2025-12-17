@@ -12,9 +12,7 @@ import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
-// import AdminAccountManagement from './pages/AdminAccountManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
-
 
 function App() {
 
@@ -25,6 +23,7 @@ function App() {
 				<Route path='/studentLogin' element={ <StudentLogin/> } />
 				<Route path='/adminLogin' element={ <AdminLogin/> } />
 				<Route path="/" element={ <Scholarships/> } />
+				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
 
 				{/* Protected routes - require login */}
 				<Route path="/applicationMgmt" element={
@@ -37,11 +36,19 @@ function App() {
 						<Posts />
 					</ProtectedRoute>
 				} />
+
 				<Route path="/postDetails" element={
-					<ProtectedRoute>
-						<PostDetails />
-					</ProtectedRoute>
-				} />
+                    <ProtectedRoute>
+                        <PostDetails />
+                    </ProtectedRoute>
+                } />
+
+                <Route path="/postDetails/:id" element={
+                    <ProtectedRoute>
+                        <PostDetails />
+                    </ProtectedRoute>
+                } />
+
 				<Route path='/staffDashboard' element={
 					<ProtectedRoute allowedRoles={["admin"]}>
 						<StaffDashboard/>
@@ -49,9 +56,6 @@ function App() {
 				} />
 				{/* application page in figma */}
 				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
-				<Route path='/admin/dashboard' element={<StaffDashboard/>} />
-				<Route path='/admin/accountManagement' element={<AdminAccountManagement/>} />
-				<Route path='/student/dashboard' element={<StudentDashboard/>} /> */}
 				
 				{/* <Route path='/ScholarshipRequirements' element={
 					<ProtectedRoute>
@@ -100,20 +104,5 @@ function App() {
 		</BrowserRouter>
 	)
 	}
-
-// function RegisterAndLogout() {
-// 	// get the user type if student or admin to determine which register page to go to
-// 	const userType = localStorage.getItem('userType')	
-
-// 	localStorage.clear()			// to clear the access and refresh tokens
-	
-// 	if (userType === 'admin') {
-// 		return <Navigate to="/adminregister" replace />
-// 	}
-// 	return <Navigate to="/studentregister" replace />
-
-// }
-
-
 
 export default App
