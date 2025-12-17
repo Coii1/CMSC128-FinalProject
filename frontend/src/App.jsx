@@ -14,6 +14,8 @@ import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
+import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
+
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
 				<Route path='/adminLogin' element={ <AdminLogin/> } />
 				<Route path="/" element={ <Scholarships/> } />
 				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
+
+				<Route path="/home" element={ <ProtectedScholarships/> } />
 
 				{/* Protected routes - require login */}
 				<Route path="/applicationMgmt" element={
@@ -56,23 +60,9 @@ function App() {
 					</ProtectedRoute>
 				} />
 				{/* application page in figma */}
-				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
-
-import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
+				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> */}
 
 
-function App() {
-
-  return (
-  	<BrowserRouter>
-        <Routes>
-			{/* Public routes */}
-			<Route path='/studentLogin' element={ <StudentLogin/> } />
-			<Route path='/adminLogin' element={ <AdminLogin/> } />
-			<Route path="/" element={ <Scholarships/> } />
-
-
-			<Route path="/home" element={ <ProtectedScholarships/> } />
 
 			{/* Protected routes - require login */}
 			<Route path="/applicationManagement" element={
@@ -80,21 +70,7 @@ function App() {
 					<ApplicationManagement />
 				</ProtectedRoute>
 			} />
-			<Route path="/posts" element={
-				<ProtectedRoute>
-					<Posts />
-				</ProtectedRoute>
-			} />
-		    <Route path="/postDetails" element={
-				<ProtectedRoute>
-					<PostDetails />
-				</ProtectedRoute>
-			} />
-			<Route path='/staffDashboard' element={
-				<ProtectedRoute allowedRoles={["admin"]}>
-					<StaffDashboard/>
-				</ProtectedRoute>
-			} />
+		
 			{/* application page in figma */}
 			{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> 
 			<Route path='/admin/dashboard' element={<StaffDashboard/>} />
@@ -147,22 +123,6 @@ function App() {
 						<AdminAccountManagement/>
 					</ProtectedRoute>
 				} />  */}
-
-				<Route path='/scholarshipReqs' element={
-					<ProtectedRoute>
-						<ScholarshipRequirements/>
-					</ProtectedRoute>
-				} /> 
-				<Route path='/adminDashboard' element={
-					<ProtectedRoute allowedRoles={["admin"]}>
-						<StaffDashboard/>
-					</ProtectedRoute>
-				} />
-				<Route path='/studentDashboard' element={
-					<ProtectedRoute allowedRoles={["student"]}>
-						<StudentDashboard/>
-					</ProtectedRoute>
-				} />
 
 
 				{/* Protected routes - Pages that should only be accessed after signing up/logging in*/}
