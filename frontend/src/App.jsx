@@ -13,8 +13,8 @@ import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
 import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
+import AdminApplicationMgmt from './pages/AdminApplicationMgmt.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
-
 
 function App() {
 
@@ -27,9 +27,17 @@ function App() {
 				<Route path="/" element={ <Scholarships/> } />
 
 				{/* Protected routes - require login */}
+
+				{/* FOR STUDENT */}
 				<Route path="/applicationMgmt" element={
 					<ProtectedRoute>
 						<ApplicationManagement />
+					</ProtectedRoute>
+				} />
+
+				<Route path="/adminAppMgmt" element={
+					<ProtectedRoute>
+						<AdminApplicationMgmt />
 					</ProtectedRoute>
 				} />
 				
