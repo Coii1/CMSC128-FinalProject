@@ -12,28 +12,57 @@ function ScholarshipRequirements() {
   const [loading, setLoading] = useState(true);
   const [scholarship, setScholarship] = useState(null);
 
+  // useEffect(() => {
+  //   if (location.state && location.state.scholarship) {
+  //     const sch = location.state.scholarship;
+  //     setScholarship(sch);
+  //     try {
+  //       const parsedRequirements = JSON.parse(sch.requirements);
+  //       const formattedRequirements = parsedRequirements.map((req, index) => ({
+  //         id: index + 1,
+  //         name: req.reqName,
+  //         ftp: req.ftp,
+  //         files: [],
+  //         feedback: ""
+  //       }));
+  //       setRequirements(formattedRequirements);
+  //     } catch (e) {
+  //       setRequirements([]);
+  //     }
+  //     setLoading(false);
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, [location.state]);
+
   useEffect(() => {
-    if (location.state && location.state.scholarship) {
-      const sch = location.state.scholarship;
-      setScholarship(sch);
-      try {
-        const parsedRequirements = JSON.parse(sch.requirements);
-        const formattedRequirements = parsedRequirements.map((req, index) => ({
-          id: index + 1,
-          name: req.reqName,
-          ftp: req.ftp,
-          files: [],
-          feedback: ""
-        }));
-        setRequirements(formattedRequirements);
-      } catch (e) {
-        setRequirements([]);
-      }
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
-  }, [location.state]);
+  if (!location.state?.scholarship) {
+    setLoading(false);
+    return;
+  }
+
+  const sch = location.state.scholarship;
+  setScholarship(sch);
+
+  try {
+    const parsed = JSON.parse(sch.requirements);
+    setRequirements(
+      parsed.map((req, i) => ({
+        id: i + 1,
+        name: req.reqName,
+        ftp: req.ftp,
+        files: [],
+        feedback: ""
+      }))
+    );
+  } catch (err) {
+    console.error("Invalid requirements JSON", err);
+    setRequirements([]);
+  }
+
+  setLoading(false);
+}, [location.state]);
+
 
 
   const handleFileChange = (id, event) => {
@@ -88,15 +117,7 @@ function ScholarshipRequirements() {
                 ))}
               </div>
             )}
-
-            {/* <label className="filepond-button">
-              UPLOAD
-              <input
-                type="file"
-                hidden
-                onChange={(e) => handleFileChange(req.id, e)}
-              />
-            </label> */}
+            
           </div>
         ))}
         {/* onclick?? */}
