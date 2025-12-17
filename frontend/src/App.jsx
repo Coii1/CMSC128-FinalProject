@@ -60,11 +60,15 @@ function App() {
 				</ProtectedRoute>
 			} />  */}
 
-			<Route path='/ScholarshipRequirements' element={
-				<ProtectedRoute>
-					<ScholarshipRequirements/>
-				</ProtectedRoute>
-			} /> 
+			<Route
+				path="/ScholarshipRequirements/:id"
+				element={
+					<ProtectedRoute>
+					<ScholarshipRequirements />
+					</ProtectedRoute>
+				}
+			/>
+
 			<Route path='/adminDashboard' element={
 				<ProtectedRoute allowedRoles={["admin"]}>
 					<StaffDashboard/>
