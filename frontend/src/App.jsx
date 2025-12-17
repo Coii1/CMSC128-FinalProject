@@ -16,6 +16,7 @@ import ApplicationManagement from './pages/ApplicationManagement.jsx'
 
 import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
 import ProtectedScholarshipsforStudents from './pages/ProtectedScholarshipsStudent.jsx'
+// import ScholarshipRequirements from "./pages/ScholarshipRequirements";
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
 				<Route path='/studentLogin' element={ <StudentLogin/> } />
 				<Route path='/adminLogin' element={ <AdminLogin/> } />
 				<Route path="/" element={ <Scholarships/> } />
+
+				
+
 				{/* <Route path="/editScholarship" element={ <EditScholarship/> } /> */}
 
 				<Route path="/home" element={ <ProtectedScholarships/> } />
@@ -38,6 +42,11 @@ function App() {
 						<ApplicationManagement />
 					</ProtectedRoute>
 				} />
+
+				
+				
+
+
 				<Route path="/posts" element={
 					<ProtectedRoute>
 						<Posts />
@@ -65,6 +74,14 @@ function App() {
 				{/* <Route path='/ScholarshipRequirements' element={<ScholarshipRequirements/>} /> */}
 
 
+			<Route
+				path="/scholarshipReqs/:id"
+				element={
+					<ProtectedRoute>
+					<ScholarshipRequirements />
+					</ProtectedRoute>
+				}
+			/>
 
 			{/* Protected routes - require login */}
 			<Route path="/applicationManagement" element={
@@ -84,15 +101,6 @@ function App() {
 					<AdminAccountManagement/>
 				</ProtectedRoute>
 			} />  */}
-
-			<Route
-				path="/ScholarshipRequirements/:id"
-				element={
-					<ProtectedRoute>
-					<ScholarshipRequirements />
-					</ProtectedRoute>
-				}
-			/>
 
 			<Route path='/adminDashboard' element={
 				<ProtectedRoute allowedRoles={["admin"]}>

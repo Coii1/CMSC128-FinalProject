@@ -1,7 +1,7 @@
-//Application.jsx
+//ScholarshipRequirements.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Header from '../components/Header.jsx';
+import Header from '../components/HeaderforStudent.jsx';
 import Footer from '../components/Footer.jsx';
 import '../styles/scholarshipRequirements.css';
 
