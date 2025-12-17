@@ -79,11 +79,11 @@ function ApplicationAccordion({ applications, onDeleteClick }) {
 
                         <div className="appMgmtCol studentCol">
                             <div className="studentRow" style={{ cursor: 'default' }}>
-                                <FaUserCircle className="studentIcon" />
-                                <span className="studentName" style={{ textDecoration: 'none', cursor: 'default' }}>
+                                {/* <FaUserCircle className="studentIcon" /> */}
+                                {/* <span className="studentName" style={{ textDecoration: 'none', cursor: 'default' }}> */}
 									{/* SCHOLARSHIP NAME */}
-                                    {studentData?.name || "Student"}
-                                </span>
+                                    {/* {studentData?.name || "Student"} */}
+                                {/* </span> */}
                             </div>
                         </div>
 

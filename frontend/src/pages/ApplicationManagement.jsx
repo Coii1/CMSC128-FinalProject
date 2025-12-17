@@ -203,7 +203,7 @@ function ApplicationManagement() {
                 <div className="appMgmtTableWrapper">
                     <div className="appMgmtTableHeader">
                         <div className="appMgmtCol scholarshipCol">Scholarship Title</div>
-                        <div className="appMgmtCol studentCol">Student</div>
+                        {/* <div className="appMgmtCol studentCol">Student</div> */}
                         <div className="appMgmtCol actionCol"></div>
                     </div>
 
