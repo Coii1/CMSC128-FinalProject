@@ -2,9 +2,9 @@
 // THIS IS WHERE THE LOGGED IN STUDENT CAN VIEW THEIR APPLIED SCHOLARSHIPS
 
 import { useEffect, useState, useRef } from 'react'
-import Header from '../components/HeaderforStudent.jsx'
+import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
-import ApplicationAccordion from '../components/ApplicationAccordion.jsx'
+import AdminAppAccordion from '../components/AdminAppAccordion.jsx'
 import '../styles/ApplicationManagement.css'
 
 // DUMMY DATA FOR FRONTEND TESTING (TO BE REMOVED)
@@ -88,7 +88,7 @@ const dummyApplications = [
   }
 ]
 
-function ApplicationManagement() {
+function AdminApplicationMgmt() {
     // For dummy data (const and useEffect to be removed)
     const [currentUser, setCurrentUser] = useState(dummyUser)
     const [applications, setApplications] = useState(dummyApplications)
@@ -195,15 +195,14 @@ function ApplicationManagement() {
             <Header />
 
             <div className="appMgmtContainer">
-                <h2 className="appMgmtTitle">
-                    Hello!<br></br> 
-                    This Is Your Applied Scholarships Dashboard
+                <h2 className="appMgmtTitle"> 
+                    Applied Scholarships Dashboard
                 </h2>
 
                 <div className="appMgmtTableWrapper">
                     <div className="appMgmtTableHeader">
                         <div className="appMgmtCol scholarshipCol">Scholarship Title</div>
-                        {/* <div className="appMgmtCol studentCol">Student</div> */}
+                        <div className="appMgmtCol studentCol">Student</div>
                         <div className="appMgmtCol actionCol"></div>
                     </div>
 
@@ -212,7 +211,7 @@ function ApplicationManagement() {
                     ) : (
                         // <ApplicationAccordion applications={applications} />
                         // PASSING THE DELETE HANDLER
-                            <ApplicationAccordion 
+                            <AdminAppAccordion 
                                 applications={applications} 
                                 onDeleteClick={(id) => setDeleteId(id)} 
                             />
@@ -272,4 +271,4 @@ function ApplicationManagement() {
     )
 }
 
-export default ApplicationManagement
+export default AdminApplicationMgmt

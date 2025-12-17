@@ -12,6 +12,8 @@ import StudentDashboard from './pages/StudentDashboard.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'
 import ApplicationManagement from './pages/ApplicationManagement.jsx'
+import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
+import AdminApplicationMgmt from './pages/AdminApplicationMgmt.jsx'
 // import EditScholarship from './pages/EditScholarship.jsx'
 
 import ProtectedScholarships from './pages/ProtectedScholarships.jsx'
@@ -37,6 +39,8 @@ function App() {
 				<Route path="/homeforStudents" element={ <ProtectedScholarshipsforStudents/> } />
 
 				{/* Protected routes - require login */}
+
+				{/* FOR STUDENT */}
 				<Route path="/applicationMgmt" element={
 					<ProtectedRoute>
 						<ApplicationManagement />
@@ -47,18 +51,26 @@ function App() {
 				
 
 
+				<Route path="/adminAppMgmt" element={
+					<ProtectedRoute>
+						<AdminApplicationMgmt />
+					</ProtectedRoute>
+				} />
+				
 				<Route path="/posts" element={
 					<ProtectedRoute>
 						<Posts />
 					</ProtectedRoute>
 				} />
 
+				{/* For POSTING a new scholarship */}
 				<Route path="/postDetails" element={
                     <ProtectedRoute>
                         <PostDetails />
                     </ProtectedRoute>
                 } />
 
+				{/* For EDITING a posted scholarsip*/}
                 <Route path="/postDetails/:id" element={
                     <ProtectedRoute>
                         <PostDetails />
@@ -101,6 +113,28 @@ function App() {
 					<AdminAccountManagement/>
 				</ProtectedRoute>
 			} />  */}
+				} /> 
+
+
+			<Route path="/home" element={ <ProtectedScholarships/> } />
+
+			{/* Protected routes - require login */}
+
+			<Route path="/posts" element={
+				<ProtectedRoute>
+					<Posts />
+				</ProtectedRoute>
+			} />
+		    <Route path="/postDetails" element={
+				<ProtectedRoute>
+					<PostDetails />
+				</ProtectedRoute>
+			} />
+			<Route path='/staffDashboard' element={
+				<ProtectedRoute allowedRoles={["admin"]}>
+					<StaffDashboard/>
+				</ProtectedRoute>
+			} />
 
 			<Route path='/adminDashboard' element={
 				<ProtectedRoute allowedRoles={["admin"]}>
@@ -144,15 +178,12 @@ function App() {
 
 					</ProtectedRoute>
 				} /> */}
-				
-				{/* <Route path='/studentDashboard' element={
-					<ProtectedRoute allowedRoles={ ["student"] }>
-					
-						<StudentDashboard />
-
+				<Route path='/scholarshipReqs' element={
+					<ProtectedRoute>
+						<ScholarshipRequirements/>
 					</ProtectedRoute>
-				} /> */}
-
+				} /> 
+				
 				{/* <Route path="/registerandlogout" element={ <RegisterAndLogout/> } /> */}
 				<Route path="*" element={ <NotFound /> } />
 			</Routes>

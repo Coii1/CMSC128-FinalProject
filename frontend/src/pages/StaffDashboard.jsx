@@ -16,9 +16,9 @@ function StaffDashboard() {
 
             <div className="staffDashboardContent">
 
-                <Link to="/manageAccounts" className="dashboardCard card-green">
+                <Link to="/adminAppMgmt" className="dashboardCard card-green">
                     <div className="card-body">
-                        <h5 className="card-title">Manage Student Accounts</h5>
+                        <h5 className="card-title">View Applied Scholarships</h5>
                     </div>
                 </Link>
 

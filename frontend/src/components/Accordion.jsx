@@ -108,13 +108,13 @@ function Accordion({ type, scholarships, sortBy }) {
                             </ul>
 
                             <div className="applyBtnWrapper">
-                                <Link 
+                                {/* <Link 
                                     to={{ pathname: `/scholarshipReqs/${scholarship.id}`}}
                                     state={{ scholarship }}
                                     className="applyBtn"
                                 >
                                     APPLY NOW
-                                </Link>
+                                </Link> */}
                             </div>
 
                         </div>
